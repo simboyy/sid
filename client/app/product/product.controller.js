@@ -11,14 +11,18 @@ angular.module('shopnxApp')
     $scope.products = [];
     $scope.product = {};
     $scope.variant = {};
+    $scope.adspace ={};
     $scope.newFeature = {};
+    $scope.newStats = {};
     $scope.newKF = {};
     $scope.product.variants = [];
     $scope.product.features = [];
     $scope.product.keyFeatures = [];
+    $scope.product.mediaKit = [];
     // $scope.selected = {};
     // $scope.selected.feature = [];
     $scope.features = Feature.query();
+
     // $scope.items=$scope.features.map(function(name){ return { key:key,val:val}; })
     // $scope.selected.feature[0] = {"key":"Fit","val":"Tight"};
     $loading.start('products');
@@ -38,23 +42,25 @@ angular.module('shopnxApp')
       Modal.show(product,{title:title, api:'Product', columns: cols});
     };
     $scope.delete = function(product) {
-      if(Settings.demo){
-        toastr.error('Delete not allowed in demo mode');
-        return;
-      }
+      // if(Settings.demo){
+      //   toastr.error('Delete not allowed in demo mode');
+      //   return;
+      // }
       if(confirm('Are you sure to delete the product?')){
         Product.delete({id:product._id});
       }
     };
     $scope.save = function(product){
-      if(Settings.demo){
-        toastr.error('Save not allowed in demo mode');
-        return;
-      }
+      // if(Settings.demo){
+      //   toastr.error('Save not allowed in demo mode');
+      //   return;
+      // }
+      // console.log(product);
       if('variants' in $scope.product){
       }else{
           $scope.product.variants = [];
       }
+
       if('keyFeatures' in $scope.product){
       }else{
           $scope.product.keyFeatures = [];
@@ -62,6 +68,12 @@ angular.module('shopnxApp')
       if('features' in $scope.product){
       }else{
           $scope.product.features = [];
+      }
+
+      if('name'  in $scope.adspace){
+         $scope.product.mediaKit.push($scope.adspace);
+         console.log($scope.product.adspace);
+
       }
 
       if('size' in $scope.variant){
@@ -77,20 +89,28 @@ angular.module('shopnxApp')
         $scope.product.features.push($scope.newFeature);
         // console.log($scope.product.features);
       }
+      if('key' in $scope.newStats){
+           $scope.product.stats.push($scope.newStats);
+      }
+
       $scope.variant = {};
       $scope.newKF = {};
       $scope.newFeature = {};
+      $scope.newStats = {};
+      $scope.adspace ={};
 
       // $scope.feature.key = feature.key.name;
       // $scope.product.feature = $scope.selected.feature;
 
-      // console.log($scope.selected.feature);
+      console.log($scope.products);
       if('_id' in product){
+
           Product.update({ id:$scope.product._id }, $scope.product).$promise.then(function() {
             toastr.success("Product info saved successfully","Success");
           }, function(error) { // error handler
             var err = error.data.errors;
-            toastr.error(err[Object.keys(err)].message,err[Object.keys(err)].name);
+            console.log(error);
+            toastr.error(err[Object.keys(err)].statusText,err[Object.keys(err)].name);
           });
         }
         else{
@@ -125,6 +145,11 @@ angular.module('shopnxApp')
 
     $scope.deleteVariants = function(index,product) {
       $scope.product.variants.splice(index, 1);
+      $scope.save(product)
+    };
+
+    $scope.deleteMedia= function(index,product) {
+      $scope.product.mediaKit.splice(index, 1);
       $scope.save(product)
     };
 

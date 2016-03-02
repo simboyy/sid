@@ -6,13 +6,20 @@ angular.module('shopnxApp')
     $scope.errors = {};
 
     $scope.register = function(form) {
+      console.log($scope.user);
       $scope.submitted = true;
+      
 
       if(form.$valid) {
         Auth.createUser({
           name: $scope.user.name,
           email: $scope.user.email,
-          password: $scope.user.password
+          password: $scope.user.password,
+          lastname:$scope.user.lastname,
+          phone:$scope.user.phone,
+          company:$scope.user.company,
+          currency:$scope.user.currency,
+          role:$scope.user.role
         })
         .then( function() {
           // Account created, redirect to the page with requested a signup

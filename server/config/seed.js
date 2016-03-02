@@ -5,6 +5,8 @@
 
 'use strict';
 
+var Publisher = require('../api/publisher/publisher.model');
+
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
 var Setting = require('../api/setting/setting.model');
@@ -17,6 +19,7 @@ var Feature = require('../api/feature/feature.model');
 var Coupon = require('../api/coupon/coupon.model');
 var Shipping = require('../api/shipping/shipping.model');
 var Country = require('../api/country/country.model');
+
 
 Shipping.find(function (err, data) {
   if(data.length < 1){
@@ -203,12 +206,19 @@ User.find(function (err, data) {
   }
 });
 
-Product.find(function (err, data) {
+
+Publisher.find(function (err, data) {
   if(data.length < 1){
-    Product.create({
+    Publisher.create({
     "_id" : "5607a6af0dc20f1b0366522a",
-    "name" : "ArrowGrey Slim Fit Formal Trouser",
-    "info" : "Complete your formal attire by wearing these grey coloured formal trousers from Arrow. Made from poly viscose, these trousers can be worn with complete ease and comfort. Featuring a smooth finish and flat front, these trousers with cross pockets at the sides can be clubbed with a modish formal shirt for a perfect look. ",
+    "firstname" : "Simbarashe",
+    "lastname": "Mukorera",
+    "email": "smkorera@gmail.com",
+    "phone":"0773439246",
+    "url":"www.ubs.com",
+    "company":"ubs",
+    "country":"zimbabwe",
+    "type" : "Men",
     "brand" : {
         "active" : true,
         "__v" : 0,
@@ -217,71 +227,119 @@ Product.find(function (err, data) {
         "name" : "Alleviater",
         "_id" : "5607c5c1dddfb6780c5bddf8"
     },
-    "nameLower" : "arrowgrey slim fit formal trouser",
-    "active" : true,
-    "sku" : 5,
-    "type" : "Men",
-    "slug" : "arrowgrey-slim-fit-formal-trouser",
-    "variants" : [
-        {
-            "mrp" : 1699.0000000000000000,
-            "price" : 1699.0000000000000000,
-            "size" : "30",
-            "weight" : "130",
-            "image" : "handsome-916499_640.jpg"
-        },
-        {
-            "mrp" : 1699.0000000000000000,
-            "price" : 1699.0000000000000000,
-            "size" : "32",
-            "weight" : "130",
-            "image" : "handsome-916499_640.jpg"
-        },
-        {
-            "mrp" : 1699.0000000000000000,
-            "price" : 1699.0000000000000000,
-            "size" : "34",
-            "weight" : "130",
-            "image" : "handsome-916499_640.jpg"
-        },
-        {
-            "mrp" : 1699.0000000000000000,
-            "price" : 1699.0000000000000000,
-            "size" : "36",
-            "weight" : "130",
-            "image" : "handsome-916499_640.jpg"
-        },
-        {
-            "mrp" : 1699.0000000000000000,
-            "price" : 1699.0000000000000000,
-            "size" : "38",
-            "weight" : "130",
-            "image" : "handsome-916499_640.jpg"
-        }
-    ],
-    "keyFeatures" : [],
-    "features" : [
-        {
-            "key" : "Fabric",
-            "val" : "Blended"
-        },
-        {
-            "key" : "Fit",
-            "val" : "Slim"
-        },
-        {
-            "key" : "Color",
-            "val" : "Grey"
-        },
-        {
-            "key" : "Style",
-            "val" : "Solid"
-        },
-        {
-            "key" : "Model Stats",
-            "val" : "This model has height 6'4\",Chest 38\",Waist 31\"and is Wearing Size 32."
-        }
-    ],
+    "description" : "Complete your formal attire by wearing these grey coloured formal trousers from Arrow. Made from poly viscose, these trousers can be worn with complete ease and comfort. Featuring a smooth finish and flat front, these trousers with cross pockets at the sides can be clubbed with a modish formal shirt for a perfect look. ",
+    "stats":[{
+        "Reach/Frequency":"3000",
+        "Page Views": "6000",
+        "Total Audience":"3.2 K",
+        "Digital Suscribers":"1.4 k",
+        "Email Suscribers":"3 k"
+              }],
+    "audience":[{"age":["18-24","25-34","35-44","45-54","55-64","65-74"],
+                "income": ["25k-34k", "35k-44k","45k-54k","55-64","65-74","75-84","85-94","95-100","100+"],
+                "gender":["male","female"]}],
+    "callout": ["Bonus Offer", "Sale"],
+    "mediaKit":[{
+            "_id":"adspc-1344466235",
+            "name": "Top Banner",
+            "price": "22",
+            "adSize":"300x300",
+            "maxSize":"10 mb",
+            "adFormat": ["jpeg","png","flash"],
+            "pricing":"Daily"
+           
+    },
+    {
+          "_id":"adspc-0390444435",
+            "name": "Sponsored Links",
+            "price": "5",
+            "adSize":"",
+            "maxSize":"100 letters",
+            "adFormat": ["jpeg","png","flash"],
+            "pricing":"Daily"
+           
+    },
+    {
+            "_id":"adspc-99093444435",
+            "name": "Top Content Left (300x100)",
+            "price": "16.5",
+            "adSize":"300x100",
+            "maxSize":"10 mb",
+            "adFormat": ["jpeg","png","flash"],
+            "pricing":"Daily"
+           
+    },
+    {
+            "adspace_id":"adspc-09003444435",
+            "name": "Top Content Right (300x100)",
+            "price": "16.5",
+            "adSize":"300x100",
+            "maxSize":"10 mb",
+            "adFormat": ["jpeg","png","flash"],
+            "pricing":"Daily"
+           
+    },
+    {
+            "_id":"adspc-093044894435",
+            "name": "Bottom Content Right (300x100) ",
+            "price": "11",
+            "adSize":"300x100",
+            "maxSize":"10 mb",
+            "adFormat": ["jpeg","png","flash"],
+            "pricing":"Daily"
+           
+    },
+    {
+            "_id":"adspc-0937044443115",
+            "name": "Bottom Content Right(300x100)",
+            "price":"11",
+            "adSize":"300x100",
+            "maxSize":"10 mb",
+            "adFormat": ["jpeg","png","flash"],
+            "pricing":"Daily"
+           
+    },
+    {
+           "_id":"adspc-098344443905",
+            "Name": "Scyscrapper(300x600)",
+            "price": "22",
+            "adSize":"300x300",
+            "maxSize":"10 mb",
+            "adFormat": ["jpeg","png","flash"],
+            "pricing":"Daily"
+    
+           
+    },
+    {
+            "_id":"adspc-098900444435",
+            "Name": "Right Button 1 (300x300)",
+            "price": "22",
+            "adSize":"300x300",
+            "maxSize":"10 mb",
+            "adFormat": ["jpeg","png","flash"],
+            "pricing":"Daily"
+           
+    },
+    {
+            "_id":"adspc-098344443775",
+            "Name": "Right Button 2 (300x300)",
+            "price": "16.5",
+            "adSize":"300x300",
+            "maxSize":"10 mb",
+            "adFormat": ["jpeg","png","flash"],
+            "pricing":"Daily"
+           
+    },
+    {
+            "_id":"adspc-0909983444435",
+            "name": "Right Button 3(300x300)",
+            "price": "16.5",
+            "adSize":"300x300",
+            "maxSize":"10 mb",
+            "adFormat": ["jpeg","png","flash"],
+            "pricing":"Daily"
+           
+    }],
     "category" : {
         "active" : true,
         "slug" : "casual-trousers",
@@ -291,7 +349,232 @@ Product.find(function (err, data) {
         "name" : "Casual Trousers",
         "_id" : "560774dad4124c770bfc4b68"
     },
+    "active" : true,
+    "keyFeatures" : [],
     "__v" : 0
+}, function() {
+        console.log('finished populating publishers');
+    });
+  }
+});
+
+Product.find(function (err, data) {
+  if(data.length < 1){
+    Product.create({
+  "_id": {
+    "$oid": "5607a6af0dc20f1b0366522a"
+  },
+  "active": true,
+  "brand": {
+    "_id": "5607c5c1dddfb6780c5bddf8",
+    "info": "Education and Health",
+    "name": "Education and Health",
+    "slug": "alleviater"
+  },
+  "category": {
+    "_id": "56d3608e4af80dd8151a73c0",
+    "category": "987",
+    "name": "Email Marketing",
+    "parentCategory": "130",
+    "slug": "email-marketing"
+  },
+  "features": [
+    {
+      "key": "Fabric",
+      "val": "Blended"
+    },
+    {
+      "key": "Fit",
+      "val": "Slim"
+    },
+    {
+      "key": "Color",
+      "val": "Grey"
+    },
+    {
+      "key": "Style",
+      "val": "Solid"
+    },
+    {
+      "key": "Model Stats",
+      "val": "This model has height 6'4\",Chest 38\",Waist 31\"and is Wearing Size 32."
+    }
+  ],
+  "info": "Zimbabwe newspapers",
+  "keyFeatures": [],
+  "stats": [
+    {
+      "Reach/Frequency": "3000",
+      "Page Views": "6000",
+      "Total Audience": "3.2 K",
+      "Digital Suscribers": "1.4 k",
+      "Email Suscribers": "3 k"
+    }
+  ],
+  "callout": [
+    "Bonus Offer",
+    "Sale"
+  ],
+  "mediaKit": [
+    {
+      "_id": "adspc-1344466235",
+      "name": "Top Banner",
+      "price": "22",
+      "adSize": "300x300",
+      "maxSize": "10 mb",
+      "adFormat": [
+        "jpeg",
+        "png",
+        "flash"
+      ],
+      "pricing": "Daily"
+    },
+    {
+      "_id": "adspc-0390444435",
+      "name": "Sponsored Links",
+      "price": "5",
+      "adSize": "",
+      "maxSize": "100 letters",
+      "adFormat": [
+        "jpeg",
+        "png",
+        "flash"
+      ],
+      "pricing": "Daily"
+    },
+    {
+      "_id": "adspc-99093444435",
+      "name": "Top Content Left (300x100)",
+      "price": "16.5",
+      "adSize": "300x100",
+      "maxSize": "10 mb",
+      "adFormat": [
+        "jpeg",
+        "png",
+        "flash"
+      ],
+      "pricing": "Daily"
+    },
+    {
+      "adspace_id": "adspc-09003444435",
+      "name": "Top Content Right (300x100)",
+      "price": "16.5",
+      "adSize": "300x100",
+      "maxSize": "10 mb",
+      "adFormat": [
+        "jpeg",
+        "png",
+        "flash"
+      ],
+      "pricing": "Daily"
+    },
+    {
+      "_id": "adspc-093044894435",
+      "name": "Bottom Content Right (300x100) ",
+      "price": "11",
+      "adSize": "300x100",
+      "maxSize": "10 mb",
+      "adFormat": [
+        "jpeg",
+        "png",
+        "flash"
+      ],
+      "pricing": "Daily"
+    },
+    {
+      "_id": "adspc-0937044443115",
+      "name": "Bottom Content Right(300x100)",
+      "price": "11",
+      "adSize": "300x100",
+      "maxSize": "10 mb",
+      "adFormat": [
+        "jpeg",
+        "png",
+        "flash"
+      ],
+      "pricing": "Daily"
+    },
+    {
+      "_id": "adspc-098344443905",
+      "Name": "Scyscrapper(300x600)",
+      "price": "22",
+      "adSize": "300x300",
+      "maxSize": "10 mb",
+      "adFormat": [
+        "jpeg",
+        "png",
+        "flash"
+      ],
+      "pricing": "Daily"
+    },
+    {
+      "_id": "adspc-098900444435",
+      "Name": "Right Button 1 (300x300)",
+      "price": "22",
+      "adSize": "300x300",
+      "maxSize": "10 mb",
+      "adFormat": [
+        "jpeg",
+        "png",
+        "flash"
+      ],
+      "pricing": "Daily"
+    },
+    {
+      "_id": "adspc-098344443775",
+      "Name": "Right Button 2 (300x300)",
+      "price": "16.5",
+      "adSize": "300x300",
+      "maxSize": "10 mb",
+      "adFormat": [
+        "jpeg",
+        "png",
+        "flash"
+      ],
+      "pricing": "Daily"
+    },
+    {
+      "_id": "adspc-0909983444435",
+      "name": "Right Button 3(300x300)",
+      "price": "16.5",
+      "adSize": "300x300",
+      "maxSize": "10 mb",
+      "adFormat": [
+        "jpeg",
+        "png",
+        "flash"
+      ],
+      "pricing": "Daily"
+    }
+  ],
+  "name": "Zimpapers",
+  "nameLower": "zim papers",
+  "sku": "5",
+  "slug": "arrowgrey-slim-fit-formal-trouser",
+  "uid": "admin@codenx.com",
+  "updated": {
+    "$date": "2016-02-28T21:36:42.302Z"
+  },
+  "variants": [
+    {
+      "_id": {
+        "$oid": "56d3686a5465bb00161d8769"
+      },
+      "mrp": 10,
+      "price": 10,
+      "size": "30",
+      "weight": "6"
+    },
+    {
+      "_id": {
+        "$oid": "56d3686a5465bb00161d8769"
+      },
+      "mrp": 10,
+      "price": 10,
+      "size": "30",
+      "weight": "6"
+    }
+  ]
 }, function() {
         console.log('finished populating products');
     });

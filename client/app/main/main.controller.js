@@ -1,6 +1,56 @@
 'use strict';
 
 angular.module('shopnxApp')
+
+ .controller('CampaignCtrl', function ($scope, $rootScope, Product, Category, socket, $stateParams, $location, $state, $injector) {
+    var id = $stateParams.id;
+    // var slug = $stateParams.slug;
+    // Storing the product id into localStorage because the _id of the selected product which was passed as a hidden parameter from products won't available on page refresh
+    if (localStorage !== null && JSON !== null && id !== null) {
+        localStorage.productId = id;
+    }
+    var productId = localStorage !== null ? localStorage.productId : null;
+
+    $scope.product = Product.get({id:productId},function(data) {
+      socket.syncUpdates('product', $scope.data);
+      generateBreadCrumb('Category',data.category._id);
+    });
+    $scope.categories = Category.all.query();
+    // To shuffle throught different product variants
+    $scope.i=0;
+    $scope.changeIndex =function(i){
+        $scope.i=i;
+    };
+
+    // The main function to navigate to a page with some hidden parameters
+    $scope.navigate = function(page,params){
+      if(params){
+        $location.replace().path(page+'/'+params.slug+'/'+params._id);
+      }else{
+        $location.replace().path('/');
+      }
+    };
+
+    // Function to generate breadcrumb for category and brand
+    // Future: Put it inside a directive
+    var generateBreadCrumb = function(page, id){
+      $scope.breadcrumb = {};
+      $scope.breadcrumb.items = [];
+      var api = $injector.get(page);
+      api.get({id:id}).$promise.then(function(child){
+        $scope.breadcrumb.items.push(child);
+        // var p = child.parent;
+        // if(p != null){findBrandPath(1);}
+        if(page==='Category'){
+          $scope.breadcrumb.items.push({name:'All Categories'});
+        }
+        else if(page==='Brand'){
+          $scope.breadcrumb.items.push({name:'All Brands'});
+        }
+      });
+    };
+
+  })
   .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, Category, socket, $stateParams, $location, $state, $injector) {
     var id = $stateParams.id;
     // var slug = $stateParams.slug;
@@ -267,7 +317,10 @@ angular.module('shopnxApp')
       Product.query(q, function(data){
           for (var i = 0; i < data.length; i++) {
               $scope.products.items.push(data[i]);
+
           }
+
+          console.log(data);
           $scope.filtered.count = data.length + $scope.products.after;
           if(data.length>=5) { $scope.products.after = $scope.products.after + data.length; } else { $scope.products.end = true;}
           $scope.products.busy = false;

@@ -56,10 +56,10 @@ angular.module('shopnxApp')
         };
 
         scope.delete = function(item) {
-          if(Settings.demo){
-            toastr.error('Delete not allowed in demo mode');
-            return;
-          }
+          // if(Settings.demo){
+          //   toastr.error('Delete not allowed in demo mode');
+          //   return;
+          // }
           api.delete({id:item._id});
         };
 
@@ -68,6 +68,7 @@ angular.module('shopnxApp')
         });
       }
     };}])
+  
 
 .directive('modalWindow', ['$timeout', function ($timeout) {
   return {

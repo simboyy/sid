@@ -7,6 +7,18 @@
       this.items = [];
       this.skuArray = [];
       this.totalWeight = 0;
+      this.taxRate = 10;
+      this.tax = null;
+      this.campaignName = "Brand Awareness";
+      this.objectives = "Increase brand awaneness to our competitors customers";
+      this.startDate = "12/01/2015";
+      this.endDate = "31/01/2015";
+      this.products = null;
+      this.totalSpend = null;
+      this.spendStats = null;
+      this.age = [];
+      this.income = [];
+
       // load items from local storage when initializing
       this.loadItems();
   }
@@ -14,7 +26,7 @@
     //----------------------------------------------------------------
     // items in the cart
     //
-    function CartItem(sku, name, slug, mrp, price, quantity, image, category, size, weight) {
+    function CartItem(sku, name, slug, mrp, price, quantity, image, category, size, weight,publisher) {
       // console.log(size);
         this.sku = sku;
         this.name = name;
@@ -27,6 +39,7 @@
         this.quantity = quantity * 1;
         this.weight = weight * 1;
         this.status = 0;
+        this.publisher = publisher;
     }
 
     //----------------------------------------------------------------

@@ -18,6 +18,7 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/publisher/publisher.socket').register(socket);
   require('../api/country/country.socket').register(socket);
   require('../api/shipping/shipping.socket').register(socket);
   require('../api/coupon/coupon.socket').register(socket);

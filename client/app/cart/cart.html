@@ -16,7 +16,7 @@
 
         <input type="text" placeholder="Filter Cart" class="form-control col-md-4" style="width:250px;margin-left:20px;" ng-model="filterCart" autofocus/>
 
-        <button value="Proceed to Checkout →" name="proceed" class="btn btn-primary pull-right" onclick="window.location.href='/checkout'" ng-disabled="cart.getTotalCount() <= 0" ng-click="cancel();">Proceed to Checkout →</button>
+        <button value="Configure Campaign →" name="proceed" class="btn btn-primary pull-right" onclick="window.location.href='/campaign'" ng-disabled="cart.getTotalCount() <= 0" ng-click="cancel();">Configure Campaign →</button>
 
         <div class="clearfix"></div>
     </div><br/>
@@ -45,7 +45,7 @@
                 <td>{{$index+1}}</td>
                 <td class="product-thumbnail">
                     <a>
-                        <img ng-src="/assets/clothing/{{item.image}}" alt="{{item.name}}" data-err-src="images/product.jpg" width="54px"/>
+                        <img src="[url=http://postimg.org/image/3u4ltc5h5/][img]http://s12.postimg.org/3u4ltc5h5/intouch_logo.jpg[/img][/url]" alt="{{item.name}}" data-err-src="images/product.jpg" width="54px"/>
                     </a>
                 </td>
 

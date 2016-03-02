@@ -4,7 +4,7 @@ _________________________________________________________ -->
 <div id="top">
     <div class="container">
         <div class="col-md-6 offer" data-animate="fadeInDown">
-            <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Offer of the day</a>  <a href="#">Get flat 35% off on orders over $50!</a>
+            <!-- <a href="#" class="btn btn-success btn-sm" data-animate-hover="shake">Offer of the day</a>  <a href="#">Get flat 35% off on orders over $50!</a> -->
         </div>
         <div class="col-md-6" data-animate="fadeInDown">
             <ul class="menu">
@@ -16,13 +16,13 @@ _________________________________________________________ -->
                   </a>
                 <ul class="dropdown-menu" role="menu">
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/product')}">
-                    <a href="/product"><i class="fa fa-truck">&nbsp;</i>Products</a>
+                    <a href="/product"><i class="fa fa-truck">&nbsp;</i>Products/Sites</a>
                   </li>
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/category')}">
-                    <a href="/category"><i class="fa fa-ticket">&nbsp;</i>Categories</a>
+                    <a href="/category"><i class="fa fa-ticket">&nbsp;</i>Platforms</a>
                   </li>
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/brand')}">
-                    <a href="/brand"><i class="fa fa-tag">&nbsp;</i>Brands</a>
+                    <a href="/brand"><i class="fa fa-tag">&nbsp;</i>Categories</a>
                   </li>
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/feature')}">
                     <a href="/feature"><i class="fa fa-tag">&nbsp;</i>Features</a>
@@ -57,8 +57,8 @@ _________________________________________________________ -->
                 </li>
                 <li><a href="/contact">Contact</a>
                 </li>
-                <li><a href="/documentation">Documentation</a>
-                </li>
+                <!--<li><a href="/documentation">Documentation</a>
+                </li>-->
             </ul>
         </div>
     </div>
@@ -106,8 +106,8 @@ _________________________________________________________ -->
         <div class="navbar-header">
 
             <a class="navbar-brand home" href="index.html" data-animate-hover="bounce">
-                <img src="/assets/img/logo.gif" alt="CodeNx logo" class="hidden-xs">
-                <img src="/assets/img/logo.gif" alt="CodeNx logo" class="visible-xs"><span class="sr-only">ShopNx - go to homepage</span>
+                <img src="/assets/img/logo.png"  class="hidden-xs">
+                <img src="/assets/img/logo.png"  class="visible-xs"><span class="sr-only"></span>
             </a>
             <div class="navbar-buttons">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation" ng-click="isCollapsed1 = !isCollapsed1">
@@ -153,9 +153,9 @@ _________________________________________________________ -->
 
         <div class="navbar-buttons">
 
-            <div class="navbar-collapse collapse right" id="basket-overview">
+           <!--  <div class="navbar-collapse collapse right" id="basket-overview">
                 <a class="btn btn-primary navbar-btn" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-sm">Cart ({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
-            </div>
+            </div> -->
             <!--/.nav-collapse -->
 
             <div class="navbar-collapse collapse right" id="search-not-mobile">

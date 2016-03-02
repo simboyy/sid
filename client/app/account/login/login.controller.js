@@ -2,7 +2,7 @@
 
 angular.module('shopnxApp')
   .controller('LoginCtrl', function ($scope, Auth, $location, $window) {
-    $scope.user = {email:'admin@codenx.com', password: 'codenx'};
+    $scope.user = {};
     $scope.errors = {};
 
     $scope.login = function(form) {

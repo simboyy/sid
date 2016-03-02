@@ -1,20 +1,24 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-        <div class="box">
-            <h1>New account</h1>
-
-            <p class="lead">Not our registered customer yet?</p>
-            <p>With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
+    <div class="col-md-4">
+      <div class="box">
+      <p class="lead">Not our registered customer yet?</p>
             <p class="text-muted">If you have any questions, please feel free to <a href="/contact">contact us</a>, our customer service center is working for you 24/7.</p>
 
             <hr>
+    </div>
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+        <div style="width: 60%" >
+            <h1>New account</h1>
+
+            
 
             <form ng-submit="register(form)" novalidate name="form">
               <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
                                                   'has-error': form.name.$invalid && submitted }">
-                <label>Name</label>
+                <label>First Name</label>
 
                 <input type="text" name="name" class="form-control" ng-model="user.name"
                        required placeholder="Your name"/>
@@ -22,6 +26,20 @@
                   A name is required
                 </p>
               </div>
+
+              <div class="form-group" ng-class="{ 'has-success': form.lastname.$valid && submitted,
+                                                  'has-error': form.lastname.$invalid && submitted }">
+                <label>Last Name</label>
+
+                <input type="text" name="lastname" class="form-control" ng-model="user.lastname"
+                       required placeholder="Your last name"/>
+                <p class="help-block" ng-show="form.name.$error.required && submitted">
+                  A Last name is required
+                </p>
+              </div>
+
+
+
 
               <div class="form-group" ng-class="{ 'has-success': form.email.$valid && submitted,
                                                   'has-error': form.email.$invalid && submitted }">
@@ -41,6 +59,43 @@
                 </p>
               </div>
 
+              <div class="form-group" ng-class="{ 'has-success': form.name.$valid && submitted,
+                                                  'has-error': form.name.$invalid && submitted }">
+                <label>Phone</label>
+
+                <input type="text" name="phone" class="form-control" ng-model="user.phone"
+                       required placeholder="Your Phone"/>
+                <p class="help-block" ng-show="form.phone.$error.required && submitted">
+                  A phone number is required
+                </p>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-success': form.company.$valid && submitted,
+                                                  'has-error': form.company.$invalid && submitted }">
+                <label>Company</label>
+
+                <input type="text" name="company" class="form-control" ng-model="user.company"
+                       required placeholder="Your company name"/>
+                <p class="help-block" ng-show="form.company.$error.required && submitted">
+                  A Company name is required
+                </p>
+              </div>
+
+              <div class="form-group" ng-class="{ 'has-success': form.currency.$valid && submitted,
+                                                  'has-error': form.currency.$invalid && submitted }">
+                <label>Currency</label>
+
+                <input type="text" name="currency" class="form-control" ng-model="user.currency"
+                       required placeholder="Your currency"/>
+                <p class="help-block" ng-show="form.currency.$error.required && submitted">
+                  A currency is required
+                </p>
+              </div>
+
+
+                <hr>
+
+
               <div class="form-group" ng-class="{ 'has-success': form.password.$valid && submitted,
                                                   'has-error': form.password.$invalid && submitted }">
                 <label>Password</label>
@@ -57,6 +112,13 @@
                   {{ errors.password }}
                 </p>
               </div>
+
+                <input type="checkbox" value="p" checklist-model="user.role" checklist-value="admin"  />Publisher &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="checkbox" value="a" checklist-model="" checklist-value="a"  />Advertiser
+
+                <hr>
+                <input type="checkbox" value="t" checklist-model="terms" checklist-value="terms" />I have read and agree with the terms and conditions
+                <hr>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Sign up</button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a class="" href="/login">Login</a>
@@ -64,7 +126,7 @@
             </form>
         </div>
     </div>
-    <div class="col-md-3"></div>
+    
 
   </div>
   <hr>

@@ -14,7 +14,9 @@ var ProductSchema = new Schema({
   info: String,
   uid: String,
   variants: [{ image : String, price : Number, mrp : Number, weight : String, size : String }],
-  features: Array,
+  mediaKit: [{ name : String, price : Number, adSize : String, pricing:String ,maxSize : String, adFormat : Array ,status: { type: Boolean, default: true }}],
+  callout:Array,
+  stats: Array,
   keyFeatures: Array,
   active: { type: Boolean, default: true },
   updated: {type: Date, default: Date.now}

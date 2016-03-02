@@ -4,7 +4,7 @@ angular.module('shopnxApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
-        title: 'eCommerce Fashion Store Using AngularJS - ShopNx',
+        title: 'Quickads',
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl',
@@ -21,6 +21,12 @@ angular.module('shopnxApp')
         url: '/p/:slug',
         templateUrl: 'app/main/product-details.html',
         controller: 'ProductDetailsCtrl'
+      })
+      .state('campaign', {
+        title: 'Configure Campaign',
+        url: '/campaign',
+        templateUrl: 'app/main/campaign.html'
+        // controller: 'CartCtrl'
       })
       .state('SubProduct', {
         title: 'All products under current category or brand',
