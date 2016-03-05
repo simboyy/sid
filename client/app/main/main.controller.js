@@ -53,6 +53,10 @@ angular.module('shopnxApp')
   })
   .controller('ProductDetailsCtrl', function ($scope, $rootScope, Product, Category, socket, $stateParams, $location, $state, $injector) {
     var id = $stateParams.id;
+    $scope.name = "";
+    $scope.size = "";
+    $scope.formart = "";
+
     // var slug = $stateParams.slug;
     // Storing the product id into localStorage because the _id of the selected product which was passed as a hidden parameter from products won't available on page refresh
     if (localStorage !== null && JSON !== null && id !== null) {
@@ -70,6 +74,14 @@ angular.module('shopnxApp')
     $scope.changeIndex =function(i){
         $scope.i=i;
     };
+
+    $scope.preview = function (adspace){
+      console.log(adspace);
+      $scope.name = adspace.name;
+      $scope.size = adspace.size;
+      $scope.formart = adspace.formart;
+
+    }
 
     // The main function to navigate to a page with some hidden parameters
     $scope.navigate = function(page,params){

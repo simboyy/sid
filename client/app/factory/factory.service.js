@@ -27,14 +27,14 @@ angular.module('shopnxApp')
   .factory('SortOptions', [function() {
     var obj = {};
     obj.server= [
-       {name:'Low Price', val:{'variants.price':1}},
-       {name:'Hign Price', val:{'variants.price':-1}},
+       {name:'Low Price', val:{'mediaKit.price':1}},
+       {name:'Hign Price', val:{'mediaKit.price':-1}},
        {name:'Name (A-Z)', val:{'name':1}},
        {name:'Name (Z-A)', val:{'name':-1}}
     ];
     obj.client= [
-       {name:'Price Asc', val:'variants[0].price'},
-       {name:'Price Desc', val:'-variants[0].price'},
+       {name:'Price Asc', val:'mediaKit[0].price'},
+       {name:'Price Desc', val:'-mediaKit[0].price'},
        {name:'Name Asc', val:'name'},
        {name:'Name Desc', val:'-name'}
     ];
@@ -67,6 +67,13 @@ angular.module('shopnxApp')
     var obj = {};
     obj = $resource('/api/features/:id', null, {'update': { method:'PUT' } });
     obj.group = $resource('/api/features/group', null, {'update': { method:'PUT' }});
+    return obj;
+  }])
+
+   .factory('Statistic', ['$resource', function($resource) {
+    var obj = {};
+    obj = $resource('/api/statistics/:id', null, {'update': { method:'PUT' } });
+    obj.group = $resource('/api/statistics/group', null, {'update': { method:'PUT' }});
     return obj;
   }])
   .factory('PaymentMethod', ['$resource', function($resource) {

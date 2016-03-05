@@ -15,6 +15,7 @@ module.exports = function(app) {
   app.use('/api/shippings', require('./api/shipping'));
   app.use('/api/coupons', require('./api/coupon'));
   app.use('/api/features', require('./api/feature'));
+  app.use('/api/statistics', require('./api/statistic'));
   app.use('/api/PaymentMethods', require('./api/PaymentMethod'));
   app.use('/api/settings', require('./api/setting'));
   app.use('/api/dashboard', require('./api/dashboard'));

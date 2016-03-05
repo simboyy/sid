@@ -4,6 +4,7 @@ angular.module('shopnxApp', [
   'ngCookies',
   'ngResource',
   'ngAnimate',
+  'naif.base64',
   'toastr',
   'ngSanitize',
   'btford.socket-io',

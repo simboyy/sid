@@ -44,7 +44,7 @@
               <h3 class="panel-title">Categories
                 <div class="nav-search" id="nav-search">
                         <span class="input-icon">
-                            <input placeholder="Filter Brands ..." class="nav-search-input" ng-model="filterBrand" autocomplete="off" type="text" autofocus style="width:100%">
+                            <input placeholder="Filter Categories ..." class="nav-search-input" ng-model="filterBrand" autocomplete="off" type="text" autofocus style="width:100%">
                             <i class="search-icon fa fa-search nav-search-icon"></i>
                         </span>
                 </div>
@@ -155,16 +155,17 @@
                       </div>
                       <div class="col-md-4 col-sm-6" ng-repeat="product in products.items" >
                             <div class="product" style="height: 400px" >
-                                <div class="img-logo">
-                                <a ui-sref="productDetail({id:product._id, slug:product.slug})">
-                                <img src="http://s12.postimg.org/t05k066rh/intouch_logo.png">
+                                <div class="img-logo"  style="margin: 5px">
+                                <center>
+                                  <a ui-sref="productDetail({id:product._id, slug:product.slug})">
+                                <img  width="200px" height="118px" data-ng-src="data:image/png;base64,{{product.logo[0].base64}}" data-err-src="images/png/avatar.png"/>
                                 </a>
+                                </center>
+                                
                                 </div>
-                                <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="invisible">
-                                    <img src="/assets/clothing/{{product.variants[0].image}}" alt="" class="logo">
-                                </a>
+                              
                                 <div class="text text-center">
-                                    <h3><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}{{product.variants[0].size}}</a>
+                                    <h3><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a>
                                    
                                     </h3>
 

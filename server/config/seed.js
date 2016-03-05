@@ -16,6 +16,7 @@ var Brand = require('../api/brand/brand.model');
 var PaymentMethod = require('../api/PaymentMethod/PaymentMethod.model');
 var Setting = require('../api/setting/setting.model');
 var Feature = require('../api/feature/feature.model');
+var Statistic = require('../api/statistic/statistic.model');
 var Coupon = require('../api/coupon/coupon.model');
 var Shipping = require('../api/shipping/shipping.model');
 var Country = require('../api/country/country.model');
@@ -90,6 +91,7 @@ Coupon.find(function (err, data) {
   }
 });
 
+
 Feature.find(function (err, data) {
   if(data.length < 1){
     Feature.create(
@@ -107,6 +109,24 @@ Feature.find(function (err, data) {
       {"key" : "Color", "val" : "Green", "active" : true},
       {"key" : "Color", "val" : "Blue", "active" : true},
       {"key" : "Color", "val" : "White", "active" : true}
+    );
+  }
+});
+
+Statistic.find(function (err, data) {
+  if(data.length < 1){
+    Statistic.create(
+      {"key" : "Reach/Frequency", "val" : "", "active" : true},
+      {"key" : "Page Views", "val" : "", "active" : true},
+      {"key" : "Total Audience", "val" : "", "active" : true},
+      {"key" : "Digital Subscribers", "val" : "", "active" : true},
+      {"key" : "SMS Reach", "val" : "", "active" : true},
+      {"key" : "Email Subscribers", "val" : "", "active" : true},
+      {"key" : "Facebook Subscribers", "val" : "", "active" : true},
+      {"key" : "Newsletter Subscribers", "val" : "", "active" : true},
+      {"key" : "Twitter Subscribers", "val" : "", "active" : true}, function() {
+        console.log('finished populating stats');
+    }
     );
   }
 });
