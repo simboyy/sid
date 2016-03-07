@@ -5,6 +5,7 @@
 'use strict';
 
 // Set default node environment to development
+//working in production mode
 process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 
 var express = require('express');
