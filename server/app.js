@@ -10,7 +10,7 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'production';
 var express = require('express');
 var mongoose = require('mongoose');
 var config = require('./config/environment');
-
+//update
 // Connect to database
 mongoose.connect(process.env.MONGOLAB_URI);
 // mongoose.connect(config.mongo.uri, config.mongo.options);
