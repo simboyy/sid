@@ -13,8 +13,8 @@
         <ul class="nav nav-pills nav-justified">
             <li class="active disabled"><a href="#"><i class="fa fa-map-marker"></i><br>Address</a>
             </li>
-            <li class="active disabled"><a href="#"><i class="fa fa-truck"></i><br>Delivery Method</a>
-            </li>
+            <!-- <li class="active disabled"><a href="#"><i class="fa fa-truck"></i><br>Delivery Method</a>
+            </li> -->
             <li class="active disabled"><a href="#"><i class="fa fa-money"></i><br>Payment Method</a>
             </li>
             <li class="active disabled"><a href="#"><i class="fa fa-eye"></i><br>Order Review</a>
@@ -81,7 +81,7 @@
               <label class="col-sm-3 control-label no-padding-right"> Zip </label>
               <div class="col-sm-7">
                  <span class="block input-icon input-icon-right">
-                      <input type="text" name="zip" ng-model="customer.zip" class="form-control" placeholder="zip code for delivery" tabindex="6"/>
+                      <input type="text" name="zip" ng-model="customer.zip" class="form-control" placeholder="zip code " tabindex="6"/>
   <small class="errorMessage"
        ng-show="checkout_form.zip.$dirty && checkout_form.zip.$invalid"> Please select your state.</small>
                   </span>
@@ -91,7 +91,7 @@
               <label class="col-sm-3 control-label no-padding-right"> Country </label>
               <div class="col-sm-7">
                  <span class="block input-icon input-icon-right">
-                      <select name="country" ng-model="customer.country" class="form-control" required="" ng-options="option.name for option in countries | orderBy:'name' track by option.code" ng-change="calculateShipping(customer.country);" class="form-control">
+                      <select name="country" ng-model="customer.country" class="form-control" required="" ng-options="option.name for option in countries | orderBy:'name' "class="form-control">
                       </select>
 
                       <!-- <div ng-if="!shipping._id">Sorry... We do not ship to this Country.</div> -->
@@ -148,8 +148,8 @@
         <div class="box-header">
             <h3>Order summary</h3>
         </div>
-        <p class="text-muted">Shipping and additional costs are calculated based on the total weight and selected country.</p>
-
+       <!--  <p class="text-muted">Shipping and additional costs are calculated based on the total weight and selected country.</p>
+ -->
         <div class="table-responsive">
             <table class="table">
                 <tbody>
@@ -158,7 +158,7 @@
                         <th>{{cart.getTotalPrice() | currency}}</th>
                     </tr>
 
-                    <tr ng-if="shipping">
+                    <!-- <tr ng-if="shipping">
                         <td>Shipping and handling</td>
                         <td ng-if="cart.getTotalPriceAfterShipping(shipping , coupon.amount).charge==0">
                             Free Shipping {{cart.getTotalPriceAfterShipping(shipping , coupon.amount).carrier}}
@@ -167,7 +167,7 @@
                             {{cart.getTotalPriceAfterShipping(shipping , coupon.amount).charge | currency}} {{cart.getTotalPriceAfterShipping(shipping , coupon.amount).carrier}} <br/>
                             <small><i><a href="/">Shop</a> {{cart.getTotalPriceAfterShipping(shipping , coupon.amount).more | currency}} more for free shipping</i></small>
                         </td>
-                    </tr>
+                    </tr> -->
                     <tr ng-if="cart.getTotalPriceAfterShipping(shipping , coupon.amount).couponAmount">
                         <td>Coupon Discount</td>
                         <td><small>{{cart.getTotalPriceAfterShipping(shipping , coupon.amount).couponAmount | currency}}</small></td>

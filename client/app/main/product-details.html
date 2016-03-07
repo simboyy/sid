@@ -82,7 +82,7 @@ _________________________________________________________ -->
                   <div class="row">
                  <div class="col-sm-3">
                    <div ng-if="product.brand">
-                  <h4>Categories</h4>
+                  <h4>Category</h4>
                   <ul>
                       <li><a href="/Brand/{{product.brand.name}}/{{product.brand._id}}">{{product.brand.name}}</a></li>
                   </ul>
@@ -151,17 +151,17 @@ _________________________________________________________ -->
                              
                                 <td>{{adspace.name}}<br><span><small>{{adspace.size}} &nbsp;{{adspace.maxSize}} &nbsp;{{adspace.formart}}</small></span></td>
                                 <td> {{adspace.price | currency}}</td>
-                                <td><!-- <small><div class="btn-group  btn-min">
-                        <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="btn btn-default  btn-min">View detail</a>
+                                <td><small><!-- <div class="btn-group  btn-min">
+                        <a ui-sref="productDetail({id:adspace.id, slug:product.slug})" class="btn btn-default  btn-min">View detail</a> -->
                         <a ng-click="cart.addItem({sku:adspace.name, name:adspace.name,  price:adspace.price}, -1)" ng-hide="checkCart(adspace.name)" class="btn btn-info  btn-min">-</a>
 
-                        <a ng-hide="checkCart(adspace.name)" class="btn btn-info  btn-min">{{getQuantity(adspace._id);}}</a>
+                        <a ng-hide="checkCart(adspace.name)" class="btn btn-info  btn-min">{{getQuantity(adspace.name);}}</a>
 
-                        <a ng-click="cart.addItem({sku:adspace.name, name:adspace.name, price:adspace.price}, +1)" ng-hide="checkCart(adspace.name)" class="btn btn-info  btn-min">+</a>
+                      <!--   <a ng-click="cart.addItem({sku:adspace.name, name:adspace.name, price:adspace.price}, +1)" ng-hide="checkCart(adspace.name)" class="btn btn-info  btn-min">+</a> -->
                         </div>
                         <a ng-click="cart.addItem({sku:adspace.name, name:adspace.name, price:adspace.price, quantity:1} ,true);" ng-show="checkCart(adspace.name)" class="btn btn-primary  btn-min"><i class="fa fa-shopping-cart"></i></a>
                       </div> 
-</small> --></td>
+</small></td>
                                 
                             </tr>
                             
