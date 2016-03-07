@@ -4,18 +4,16 @@
 // =================================
 module.exports = {
   // Server IP
-  ip:       process.env.OPENSHIFT_NODEJS_IP ||
-            process.env.IP ||
+  ip:       process.env.IP ||
             undefined,
 
   // Server port
-  port:     process.env.OPENSHIFT_NODEJS_PORT ||
-            process.env.PORT ||
+  port:     process.env.PORT ||
             8080,
 
   // MongoDB connection options
   mongo: {
-    uri:    process.env.OPENSHIFT_MONGODB_DB_URL || // Added app
+    uri:    process.env.MONGOLAB_URI || // Added app
             'mongodb://localhost/shopnx'
   },
 
