@@ -7,17 +7,20 @@
 </button>
 
 <div class="modal-header">
-    <h3 class="modal-title">Cart Details</h3> Total Amount: {{cart.getTotalPrice() | currency}} - ({{cart.getTotalCount()}} items)
+    <h3 class="modal-title">MediaCart Details</h3> Total Amount: {{cart.getTotalPrice() | currency}} - ({{cart.getTotalCount()}} items)
 </div>
 
 <div class="modal-body">
     <div class="actions-continue">
-        <button class="btn btn-default pull-left" ng-click="cart.clearItems();" ng-disabled="cart.getTotalCount() <= 0">Clear Cart</button>
+        <button class="btn btn-default pull-left" ng-click="cart.clearItems();" ng-disabled="cart.getTotalCount() <= 0">Clear MediaCart</button>
 
-        <input type="text" placeholder="Filter Cart" class="form-control col-md-4" style="width:250px;margin-left:20px;" ng-model="filterCart" autofocus/>
+        <input type="text" placeholder="Filter Cart" class="form-control col-md-4" style="width:200px;margin-left:20px;" ng-model="filterCart" autofocus/>
+        <div ng-hide="cart.products">
+        <button value="Configure Campaign →" name="proceed" class="btn btn-primary pull-right" onclick="window.location.href='/newcampaign'" ng-disabled="cart.getTotalCount() <= 0" ng-click="cancel();">Configure Campaign →</button></div>
 
-        <button value="Configure Campaign →" name="proceed" class="btn btn-primary pull-right" onclick="window.location.href='/campaign'" ng-disabled="cart.getTotalCount() <= 0" ng-click="cancel();">Configure Campaign →</button>
-
+        <div ng-show="cart.products">
+         <button value="Checkout →" name="proceed" class="btn btn-primary pull-right" onclick="window.location.href='/checkout'" ng-disabled="cart.getTotalCount() <= 0" ng-click="cancel();">Checkout →</button>
+         </div>
         <div class="clearfix"></div>
     </div><br/>
 
@@ -37,7 +40,7 @@
             <!-- empty cart message -->
             <tr ng-hide="cart.getTotalCount() > 0" >
                 <td class="tdCenter" colspan="7">
-                    Your cart is empty. &nbsp;&nbsp;<a class="btn btn-primary" href="/" ng-click="cancel();">Shop Now</a>
+                    Your MediaCart is empty. &nbsp;&nbsp;<a class="btn btn-primary" href="/" ng-click="cancel();">Build Campaign Now</a>
                 </td>
             </tr>
 
@@ -45,7 +48,7 @@
                 <td>{{$index+1}}</td>
                 <td class="product-thumbnail">
                     <a>
-                        <img src=""  data-err-src="" width="54px"/>
+                         <img data-ng-src="data:image/png;base64,{{item.image}}"  alt="{{item.publisher}}" width="100px" class="img-responsive">
                     </a>
                 </td>
 

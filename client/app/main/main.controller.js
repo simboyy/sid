@@ -2,7 +2,7 @@
 
 angular.module('shopnxApp')
 
- .controller('CampaignCtrl', function ($scope, $rootScope, Product, Category, socket, $stateParams, $location, $state, $injector) {
+ .controller('NewCampaignCtrl', function ($scope,$rootScope, toastr,Campaign , Product, Category, socket, $stateParams, $location, $state, $injector) {
     var id = $stateParams.id;
     // var slug = $stateParams.slug;
     // Storing the product id into localStorage because the _id of the selected product which was passed as a hidden parameter from products won't available on page refresh
@@ -21,7 +21,19 @@ angular.module('shopnxApp')
     $scope.changeIndex =function(i){
         $scope.i=i;
     };
+    
+    // create new campaign
 
+    $scope.createCampaign =  function(cart){
+
+      Campaign.save(cart).$promise.then(function() {
+        $state.go('campaign');
+               // toastr.success("Campaign created  successfully","Success");
+
+          });
+
+      // body
+    }
     // The main function to navigate to a page with some hidden parameters
     $scope.navigate = function(page,params){
       if(params){
@@ -113,7 +125,9 @@ angular.module('shopnxApp')
 
   })
 
-  .controller('MainCtrl', function ($scope, $state, $stateParams, $location, Product, Brand, Category, Feature, socket, $rootScope, $injector, $loading) {
+  .controller('MainCtrl', function ($scope,Cart, $state, $stateParams, $location, Product, Brand, Category, Feature, socket, $rootScope, $injector, $loading) {
+
+      Cart.cart.products = null;
 
     if ($stateParams.productSku) { // != null
         $scope.product = $scope.store.getProduct($stateParams.productSku);
@@ -239,29 +253,29 @@ angular.module('shopnxApp')
       displayProducts(q,true);
     };
 
-    // $scope.filterFeatures = function() {
-    //   if ($scope.products.busy){ return; }
-    //   $scope.products.busy = true;
-    //   a.fl = [];
-    //   if($scope.fl.features){
-    //       angular.forEach($scope.fl.features,function(val, key){
-    //         if(val.length>0){
-    //           a.fl.push({'features.key' : key, 'features.val' : { $in: val}});
-    //         }
-    //       });
-    //       if(a.fl.length>0 && a.br && a.price) {
-    //         q.where = { $and : [a.price, a.br,{$and : a.fl}]};
-    //       }
-    //       else if(a.br && a.price) {
-    //         q.where = { $and : [a.price, a.br]};
-    //       }else if(a.br) {
-    //         q.where = { $and : [a.br]};
-    //       }else{
-    //         q.where = {};
-    //       }
-    //       displayProducts(q,true);
-    //   }
-    // };
+    $scope.filterFeatures = function() {
+      if ($scope.products.busy){ return; }
+      $scope.products.busy = true;
+      a.fl = [];
+      if($scope.fl.features){
+          angular.forEach($scope.fl.features,function(val, key){
+            if(val.length>0){
+              a.fl.push({'features.key' : key, 'features.val' : { $in: val}});
+            }
+          });
+          if(a.fl.length>0 && a.br && a.price) {
+            q.where = { $and : [a.price, a.br,{$and : a.fl}]};
+          }
+          else if(a.br && a.price) {
+            q.where = { $and : [a.price, a.br]};
+          }else if(a.br) {
+            q.where = { $and : [a.br]};
+          }else{
+            q.where = {};
+          }
+          displayProducts(q,true);
+      }
+    };
     //
     // $scope.filterBrands = function() {
     //   // This function required to query from database in place of filtering items from angular $scope,

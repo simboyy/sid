@@ -49,8 +49,8 @@ _________________________________________________________ -->
       <div class="col-md-9">
           <div class="row" id="productMain">
               <div class="col-sm-3">
-                  <div id="mainImage" style="height: 50%">
-                      <img data-ng-src="data:image/png;base64,{{product.logo[0].base64}}"  alt="{{product.name}}" class="img-responsive">
+                  <div id="mainImage" style="height: 60%">
+                      <img  data-ng-src="data:image/png;base64,{{product.logo[0].base64}}"  alt="{{product.name}}" class="img-responsive">
                   </div>
 
                   
@@ -58,7 +58,7 @@ _________________________________________________________ -->
               </div>
               <div class="col-sm-9">
                   <div class="box">
-                      <h1 class="text-center">{{product.name}} </h1>
+                      <h3 class="text-center">{{product.name}} </h3>
                      
                     <div ng-if="product.info">
                      <h4>Details</h4>
@@ -142,7 +142,7 @@ _________________________________________________________ -->
                             <thead>
                             <tr>
                                 <th>Adspace</th>
-                                <th>Rate</th>
+                                <th>Buy Type</th>
                                 <th></th>
                                 
                             </tr>
@@ -151,16 +151,16 @@ _________________________________________________________ -->
                             <tr data-ng-repeat="adspace in product.variants"  ng-click="preview(adspace)">
                              
                                 <td>{{adspace.name}}<br><span><small>{{adspace.size}} &nbsp;{{adspace.maxSize}} &nbsp;{{adspace.formart}}</small></span></td>
-                                <td> {{adspace.price | currency}}</td>
+                                <td> {{adspace.price | currency}}<br><small>{{adspace.model}}</small></td>
                                 <td><small><!-- <div class="btn-group  btn-min">
                         <a ui-sref="productDetail({id:adspace.id, slug:product.slug})" class="btn btn-default  btn-min">View detail</a> -->
-                        <a ng-click="cart.addItem({sku:adspace.name, name:adspace.name,  price:adspace.price}, -1)" ng-hide="checkCart(adspace.name)" class="btn btn-info  btn-min">-</a>
+                        <a ng-click="cart.addItem({sku:adspace.sku, name:adspace.name,  price:adspace.price}, -1)" ng-hide="checkCart(adspace.sku)" class="btn btn-info  btn-min">-</a>
 
-                        <a ng-hide="checkCart(adspace.name)" class="btn btn-info  btn-min">{{getQuantity(adspace.name);}}</a>
+                        <a ng-hide="checkCart(adspace.sku)" class="btn btn-info  btn-min">{{getQuantity(adspace.sku)}}</a>
 
-                      <!--   <a ng-click="cart.addItem({sku:adspace.name, name:adspace.name, price:adspace.price}, +1)" ng-hide="checkCart(adspace.name)" class="btn btn-info  btn-min">+</a> -->
+                        <!-- <a ng-click="cart.addItem({sku:adspace.sku, name:adspace.name, price:adspace.price}, +1)" ng-hide="checkCart(adspace.sku)" class="btn btn-info  btn-min">+</a> -->
                         </div>
-                        <a ng-click="cart.addItem({sku:adspace.name, name:adspace.name, price:adspace.price, quantity:1} ,true);" ng-show="checkCart(adspace.name)" class="btn btn-primary  btn-min"><i class="fa fa-shopping-cart"></i></a>
+                        <a ng-click="cart.addItem({sku:adspace.sku, name:adspace.name,slug:adspace.formart,mrp:adspace.model, weight:adspace.maxSize,size:adspace.size,price:adspace.price ,status: {name:'New', val:402}, publisher:product.name,advertiser:user,uid:product.uid,category:product.brand.name,image:product.logo[0].base64,quantity:1} ,true);" ng-show="checkCart(adspace.sku)" class="btn btn-primary  btn-min"><i class="fa fa-shopping-cart"></i></a>
                       </div> 
 </small></td>
                                 

@@ -13,7 +13,9 @@ angular.module('shopnxApp')
           email: $scope.user.email,
           password: $scope.user.password
         })
-        .then( function() {
+        .then( function(user) {
+
+          console.log(user);
           // Logged in, redirect to the page with requested a login
           Auth.redirectToAttemptedUrl();
         })

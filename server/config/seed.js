@@ -153,6 +153,11 @@ PaymentMethod.find(function (err, data) {
         active : true
     },
     {
+        name: 'PayNow',
+        email: 'smkorera@gmail.com',
+        active : true
+    },
+    {
         name: 'Google',
         email: '2lessons@gmail.com',
         options: {

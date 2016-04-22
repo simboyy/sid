@@ -31,6 +31,8 @@ angular.module('shopnxApp')
       };
 
       $scope.placeOrder = function(cart,shipping){
+
+        console.log(cart);
         var data = {phone:$scope.customer.phone, name:$scope.customer.name, address:$scope.customer.address, city:$scope.customer.city, payment:'Pending', items:cart, shipping:shipping};
         Order.save(data);
         $scope.msg = 'Processing Payment ...';

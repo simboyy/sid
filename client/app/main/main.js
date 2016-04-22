@@ -4,7 +4,7 @@ angular.module('shopnxApp')
   .config(function ($stateProvider) {
     $stateProvider
       .state('main', {
-        title: 'Quickads',
+        title: 'MediaBox',
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainCtrl',
@@ -22,11 +22,11 @@ angular.module('shopnxApp')
         templateUrl: 'app/main/product-details.html',
         controller: 'ProductDetailsCtrl'
       })
-      .state('campaign', {
-        title: 'Configure Campaign',
-        url: '/campaign',
-        templateUrl: 'app/main/campaign.html'
-        // controller: 'CartCtrl'
+      .state('newCampaign', {
+        title: 'New Campaign',
+        url: '/newcampaign',
+        templateUrl: 'app/main/campaign.html',
+        controller: 'NewCampaignCtrl'
       })
       .state('SubProduct', {
         title: 'All products under current category or brand',

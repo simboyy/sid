@@ -3,6 +3,7 @@
 angular.module('shopnxApp')
   .controller('SignupCtrl', function ($scope, Auth, $location, $window) {
     $scope.user = {};
+     $scope.users = {};
     $scope.errors = {};
 
     $scope.register = function(form) {

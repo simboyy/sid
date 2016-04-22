@@ -18,34 +18,53 @@ _________________________________________________________ -->
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/product')}">
                     <a href="/product"><i class="fa fa-truck">&nbsp;</i>Products/Sites</a>
                   </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/category')}">
+                  <!-- <li ng-show="isAdmin()" ng-class="{active: isActive('/category')}">
                     <a href="/category"><i class="fa fa-ticket">&nbsp;</i>Platforms</a>
-                  </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/brand')}">
+                  </li> -->
+                 <!--  <li ng-show="isAdmin()" ng-class="{active: isActive('/brand')}">
                     <a href="/brand"><i class="fa fa-tag">&nbsp;</i>Categories</a>
-                  </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/feature')}">
+                  </li> -->
+                 <!--  <li ng-show="isAdmin()" ng-class="{active: isActive('/feature')}">
                     <a href="/feature"><i class="fa fa-tag">&nbsp;</i>Features</a>
-                  </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/coupon')}">
+                  </li> -->
+                  <!-- <li ng-show="isAdmin()" ng-class="{active: isActive('/coupon')}">
                     <a href="/coupon"><i class="fa fa-tag">&nbsp;</i>Coupons</a>
+                  </li> -->
+
+
+                  <li ng-show="isAdmin()" ng-class="{active: isActive('/media')}">
+                    <a href="/media"><i class="fa fa-tag">&nbsp;</i>Media</a>
                   </li>
-                  <li ng-show="isLoggedIn()" ng-class="{active: isActive('/order')}">
-                    <a href="/order"><i class="fa fa-road">&nbsp;</i>Orders</a>
+                  
+                  <li ng-show="isAdmin()" ng-class="{active: isActive('/puborder')}">
+                    <a href="/puborder"><i class="fa fa-tag">&nbsp;</i>Orders</a>
+
+                  </li>
+                
+                    <li ng-show="isLoggedIn()" ng-hide="isAdmin()" ng-class="{active: isActive('/campaign')}">
+                    <a href="/campaign"><i class="fa fa-road">&nbsp;</i>Campaigns</a>
+                  </li>
+                  <li ng-show="isLoggedIn()" ng-hide="isAdmin()" ng-class="{active: isActive('/order')}">
+                    <a href="/order"><i class="fa fa-road">&nbsp;</i>Transaction History</a>
+                  </li>
                   </li>
                   <li class="divider"></li>
+
+                  <li ng-show="isLoggedIn()" ng-class="{active: isActive('/profile')}">
+                    <a href="/profile"><i class="fa fa-user">&nbsp;</i>Profile</a>
+                  </li>
                    <li ng-show="isLoggedIn()" ng-class="{active: isActive('/settings')}">
                     <a href="/settings"><i class="fa fa-user">&nbsp;</i>Change Password</a>
                   </li>
                   <li ng-show="isAdmin()" ng-class="{active: isActive('/customer')}">
                     <a href="/customer"><i class="fa fa-user">&nbsp;</i>Customers</a>
                   </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/paymentMethod')}">
+                 <!--  <li ng-show="isAdmin()" ng-class="{active: isActive('/paymentMethod')}">
                     <a href="/paymentMethod"><i class="fa fa-wrench">&nbsp;</i>Payment Method</a>
-                  </li>
-                  <li ng-show="isAdmin()" ng-class="{active: isActive('/shipping')}">
+                  </li> -->
+                  <!-- <li ng-show="isAdmin()" ng-class="{active: isActive('/shipping')}">
                     <a href="/shipping"><i class="fa fa-wrench">&nbsp;</i>Shipping Settings</a>
-                  </li>
+                  </li> -->
                   <!-- <li ng-show="isAdmin()" ng-class="{active: isActive('/country')}">
                     <a href="/country"><i class="fa fa-wrench">&nbsp;</i>Country</a>
                   </li> -->
@@ -55,6 +74,7 @@ _________________________________________________________ -->
                   <li class="divider"></li>
                   </ul>
                 </li>
+                <li ng-show="isLoggedIn()"><a href="">Messages</a></li>
                 <li><a href="/contact">Contact</a>
                 </li>
                 <!--<li><a href="/documentation">Documentation</a>
@@ -118,7 +138,7 @@ _________________________________________________________ -->
                     <span class="sr-only">Toggle search</span>
                     <i class="fa fa-search"></i>
                 </button>
-                <a class="btn btn-default navbar-toggle" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-xs">Cart ({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
+                <a class="btn btn-default navbar-toggle" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-xs">({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
 
             </div>
         </div>
@@ -128,7 +148,7 @@ _________________________________________________________ -->
           <div collapse="isCollapsed1" class="navbar-collapse collapse" id="navbar-main2">
             <ul class="nav navbar-nav navbar-left">
                 <li class="dropdown yamm-fw" ng-repeat= "p in categories">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">{{p.name}} <b class="caret"></b></a>
+                    <a href="Category/{{p.slug}}/{{p._id}}" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">{{p.name}} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <div class="yamm-content">
@@ -154,7 +174,7 @@ _________________________________________________________ -->
         <div class="navbar-buttons">
 
             <small></small><div class="navbar-collapse collapse right" id="basket-overview">
-                <a class="btn btn-primary navbar-btn" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-sm">Cart ({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
+                <a class="btn btn-primary navbar-btn" ng-click="openCart(cart,'lg');" href=""><i class="fa fa-shopping-cart">&nbsp;</i> <span class="hidden-sm">({{cart.getTotalCount()}}) - {{cart.getTotalPrice() | currency:"$"}}</span></a>
             </div>
             </small>
             <!--/.nav-collapse -->

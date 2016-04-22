@@ -17,6 +17,13 @@ angular.module('shopnxApp')
     return obj;
   }])
 
+  .factory('Users', ['$resource', function($resource) {
+    var obj = {};
+    obj = $resource('/api/users/:id', null, {'update': { method:'PUT' } });
+    return obj;
+  }])
+
+
   .factory('Shipping', ['$resource', function($resource) {
     var obj = {};
     obj = $resource('/api/shippings/:id', null, {'update': { method:'PUT' } });
@@ -27,14 +34,14 @@ angular.module('shopnxApp')
   .factory('SortOptions', [function() {
     var obj = {};
     obj.server= [
-       {name:'Low Price', val:{'mediaKit.price':1}},
-       {name:'Hign Price', val:{'mediaKit.price':-1}},
+       {name:'Low Price', val:{'variants.price':1}},
+       {name:'Hign Price', val:{'variants.price':-1}},
        {name:'Name (A-Z)', val:{'name':1}},
        {name:'Name (Z-A)', val:{'name':-1}}
     ];
     obj.client= [
-       {name:'Price Asc', val:'mediaKit[0].price'},
-       {name:'Price Desc', val:'-mediaKit[0].price'},
+       {name:'Price Asc', val:'variants[0].price'},
+       {name:'Price Desc', val:'-variants[0].price'},
        {name:'Name Asc', val:'name'},
        {name:'Name Desc', val:'-name'}
     ];
@@ -92,6 +99,7 @@ angular.module('shopnxApp')
     var obj = {};
     obj = $resource('/api/orders/:id', null, {'update': { method:'PUT' } });
     obj.my = $resource('/api/orders/my', null, {'update': { method:'PUT' }});
+    obj.pub = $resource('/api/orders/pub', null, {'update': { method:'PUT' }});
     obj.status = [
       {name:'Pending Payment', val:402},
       {name:'Order Placed', val:201},
@@ -103,4 +111,20 @@ angular.module('shopnxApp')
       {name:'Not in Stock', val:404}
     ];
     return obj;
+  }])
+
+   .factory('Campaign', ['$resource', function($resource) {
+    var obj = {};
+    obj = $resource('/api/campaigns/:id', null, {'update': { method:'PUT' } });
+    obj.my = $resource('/api/campaigns/my', null, {'update': { method:'PUT' }});
+    obj.pub = $resource('/api/campaigns/pub', null, {'update': { method:'PUT' }});
+    obj.status = [
+      {name:'New', val:402},
+      {name:'Waiting Responds', val:201},
+      {name:'Responds Recieved', val:200}
+      
+    ];
+    return obj;
   }]);
+
+   

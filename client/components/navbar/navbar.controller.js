@@ -20,6 +20,12 @@ angular.module('shopnxApp')
     $rootScope.isAdmin = Auth.isAdmin;
     $scope.getCurrentUser = Auth.getCurrentUser;
 
+    var user = $scope.getCurrentUser();
+
+    console.log(user);
+
+    $rootScope.user = user;
+
     $rootScope.checkCart = function(id){
         if(!_.contains($scope.cart.skuArray, id)){
             return true;

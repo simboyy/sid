@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('shopnxApp', [
+  'irontec.simpleChat',
   'ngCookies',
   'ngResource',
   'ngAnimate',
@@ -16,7 +17,15 @@ angular.module('shopnxApp', [
   'infinite-scroll',
   'darthwade.dwLoading',
   'angularMoment',
-  'ui.select'
+  'ui.select',
+  'ngFileUpload',
+  'luegg.directives',
+  'angular-simple-chat',
+  'ngMaterial',
+  'ngTable',
+  'smart-table',
+  'angular.filter'
+
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

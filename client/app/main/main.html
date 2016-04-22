@@ -155,16 +155,18 @@
                       </div>
                       <div class="col-md-4 col-sm-6" ng-repeat="product in products.items" >
                             <div class="product" style="height: 400px" >
-                                <div class="img-logo"  style="margin: 5px">
+                                <div class="img-logo"  style="margin: 15px">
                                 <center>
                                   <a ui-sref="productDetail({id:product._id, slug:product.slug})">
-                                <img  width="200px" height="118px" data-ng-src="data:image/png;base64,{{product.logo[0].base64}}" data-err-src="images/png/avatar.png"/>
+                                <img   width="150px" height="80px" data-ng-src="data:image/png;base64,{{product.logo[0].base64}}" data-err-src="images/png/avatar.png"/>
                                 </a>
                                 </center>
                                 
                                 </div>
+
+                                <div class="clear-fix"></div>
                               
-                                <div class="text text-center">
+                                <div class="text text-center" style="margin-top: 10px">
                                     <h3><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a>
                                    
                                     </h3>
@@ -174,6 +176,9 @@
                                          <li ng-repeat="f in product.stats"><a href="#">{{f.key}} : {{f.val}}</a></li>                    
                                     </ol>
                                     </div>
+
+                                    <!-- <a href="/Brand/{{product.brand.name}}/{{product.brand._id}}">{{product.brand.name}}</a>                                    <a href="/Category/{{product.category.slug}}/{{product.category._id}}">{{product.category.name}} -->
+
 
                                     
                                    <!-- <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '$'}}</del> {{product.variants[0].price | currency : '$'}}</p>-->

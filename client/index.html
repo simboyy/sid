@@ -13,11 +13,16 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(client) app/vendor.css -->
       <!-- bower:css -->
-      <link rel="stylesheet" href="https://npmcdn.com/angular-toastr/dist/angular-toastr.css" />
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.10.2/rzslider.min.css" />
-      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
-     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
-      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.14.9/select.css" />
+      <link rel="stylesheet" href="bower_components/angular-toastr/dist/angular-toastr.css" />
+      <link rel="stylesheet" href="bower_components/angular-simple-chat/dist/angular-simple-chat.css">
+      <link rel="stylesheet" href="bower_components/angularjs-slider/dist/rzslider.css" />
+      <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+      <link rel="stylesheet" href="bower_components/components-font-awesome/css/font-awesome.css" />
+      <link rel="stylesheet" href="bower_components/ui-select/dist/select.css" />
+      <link rel="stylesheet" href="bower_components/angular-bootstrap-simple-chat/src/css/style.css">
+      <link rel="stylesheet" href="bower_components/angular-bootstrap-simple-chat/src/css/themes.css">
+      <link rel="stylesheet" href="bower_components/angular-material/angular-material.css">
+      <link rel="stylesheet" href="bower_components/ng-table/dist/ng-table.css">
       <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css({.tmp,client}) app/app.css -->
@@ -26,6 +31,8 @@
       <link rel="stylesheet" href="app/account/login/login.css">
       <link rel="stylesheet" href="app/admin/admin.css">
       <link rel="stylesheet" href="app/app.css">
+      <link rel="stylesheet" href="app/select2.css">
+      <link rel="stylesheet" href="app/selectize.default.css">
       <link rel="stylesheet" href="app/brand/brand.css">
       <link rel="stylesheet" href="app/category/category.css">
       <link rel="stylesheet" href="app/checkout/checkout.css">
@@ -41,8 +48,12 @@
       <link rel="stylesheet" href="app/invoice/invoice.css">
       <link rel="stylesheet" href="app/main/main.css">
       <link rel="stylesheet" href="app/order/order.css">
+       <link rel="stylesheet" href="app/puborder/puborder.css">
+      <link rel="stylesheet" href="app/media/media.css">
+      <link rel="stylesheet" href="app/campaign/campaign.css">
       <link rel="stylesheet" href="app/paymentMethod/paymentMethod.css">
       <link rel="stylesheet" href="app/product/product.css">
+       <link rel="stylesheet" href="app/profile/profile.css">
       <link rel="stylesheet" href="app/shipping/shipping.css">
       <link rel="stylesheet" href="app/shop/shop.css">
       <link rel="stylesheet" href="app/theme.css">
@@ -51,7 +62,8 @@
     <!-- endbuild -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,700,300,100' rel='stylesheet' type='text/css'>
   </head>
-  <body ng-app="shopnxApp">
+  <body >
+  <div ng-app="shopnxApp">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -61,10 +73,10 @@
     <div ng-include="'components/navbar/navbar.html'"></div>
     <div id="all">
 
-      <div id="content">
-          <div class="container">
+      <div id="content" style="height: inherit;background-color: #f0f0f0">
+          <div class="container" style="height: inherit;background-color: #f0f0f0">
 
-    <div ui-view=""></div>
+    <ui-view></ui-view>
   </div>
   <!-- /.container -->
 </div>
@@ -87,6 +99,8 @@
                     </div>
                 </div>
             </div>
+        </div>
+
         </div>
         <!-- /#all -->
         <!--Stripe payment -->
@@ -118,7 +132,7 @@
     <![endif]-->
     <!-- build:js({client,node_modules}) app/vendor.js -->
       <!-- bower:js -->
-      <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
+      <script src="bower_components/jquery/dist/jquery.js"></script>
       <script src="bower_components/angular/angular.js"></script>
       <script src="bower_components/angular-animate/angular-animate.js"></script>
       <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -129,22 +143,35 @@
       <script src="bower_components/angular-moment/angular-moment.js"></script>
       <script src="bower_components/angular-resource/angular-resource.js"></script>
       <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+      <script src="bower_components/angular-bootstrap-simple-chat/src/scripts/index.js"></script>
+      <script src="bower_components/angular-bootstrap-simple-chat/src/scripts/templates.js"></script>
       <script src="bower_components/angular-socket-io/socket.js"></script>
       <script src="bower_components/angular-tablesort/js/angular-tablesort.js"></script>
-      <script src="https://npmcdn.com/angular-toastr/dist/angular-toastr.tpls.js"></script>
+      <script src="bower_components/angular-toastr/dist/angular-toastr.tpls.js"></script>
       <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angularjs-slider/2.10.2/rzslider.min.js"></script>
+      <script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
       <script src="bower_components/checklist-model/checklist-model.js"></script>
       <script src="bower_components/json3/lib/json3.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.6.1/lodash.js"></script>
+      <script src="bower_components/lodash/dist/lodash.compat.js"></script>
       <script src="bower_components/ngInfiniteScroll/build/ng-infinite-scroll.js"></script>
       <script src="bower_components/bootstrap-hover-dropdown/bootstrap-hover-dropdown.js"></script>
       <script src="bower_components/angular-base64-upload/src/angular-base64-upload.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-select/0.14.9/select.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-gettext/2.2.1/angular-gettext.js"></script>
+      <script src="bower_components/ui-select/dist/select.js"></script>
+      <script src="bower_components/angular-gettext/dist/angular-gettext.js"></script>
+      <script src="bower_components/ng-file-upload/ng-file-upload.js"></script>
+      <script src="bower_components/angular-scroll-glue/src/scrollglue.js"></script>
+      <script src="bower_components/angular-simple-chat/dist/angular-simple-chat.js"></script>
+      <script src="/bower_components/angular-aria/angular-aria.js"></script>
+      <script src="/bower_components/angular-animate/angular-animate.js"></script>
+      <script src="/bower_components/angular-material/angular-material.js"></script>
+      <script src="/bower_components/ng-table/dist/ng-table.js"></script>
+      <script src="/bower_components/angular-smart-table/dist/smart-table.js"></script>
+      <script src="/bower_components/angular-filter/dist/angular-filter.min.js"></script>
+
+      
       <!-- endbower -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.4.5/socket.io.js"></script>
+      <script src="/components/navbar/bootstrap.min.js"></script>
+      <script src="socket.io-client/socket.io.js"></script>
 
 
     <!-- endbuild -->
@@ -194,20 +221,29 @@
           <script src="app/main/main.js"></script>
           <script src="app/order/order.controller.js"></script>
           <script src="app/order/order.js"></script>
+           <script src="app/puborder/puborder.controller.js"></script>
+          <script src="app/puborder/puborder.js"></script>
+           <script src="app/media/media.controller.js"></script>
+          <script src="app/media/media.js"></script>
+          <script src="app/campaign/campaign.controller.js"></script>
+          <script src="app/campaign/campaign.js"></script>
           <script src="app/paymentMethod/paymentMethod.controller.js"></script>
           <script src="app/paymentMethod/paymentMethod.js"></script>
           <script src="app/product/product.controller.js"></script>
           <script src="app/product/product.js"></script>
+          <script src="app/profile/profile.controller.js"></script>
+          <script src="app/profile/profile.js"></script>
           <script src="app/settings.js"></script>
           <script src="app/shipping/shipping.controller.js"></script>
           <script src="app/shipping/shipping.js"></script>
           <script src="app/shop/shop.controller.js"></script>
           <script src="app/shop/shop.js"></script>
+          <script src="app/factory/Cart/Cart.service.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
           <script src="components/modal/modal.service.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
-          <script src="components/navbar/bootstrap.min.js"></script>
+         
           <script src="components/navbar/navbar.controller.js"></script>
           <script src="components/socket/socket.service.js"></script>
           <!-- endinjector -->

@@ -10,12 +10,14 @@ angular.module('shopnxApp')
 
 
     // var cols = ['sku','name','nameLower','slug','status','info','uid', 'active','img'];
-    $scope.variantsNew = {"name":"Mailing List","price":25,"size":"800x400","maxSize":"","formart":"PNG,GIF,JPEG"},{"name":"SMS","price":25,"size":"","maxSize":"","formart":"text"};
-    $scope.statsNew = {"key":"Digital Subscribers","val":"50 K"},{"key":"SMS Reach","val":"25 K"},{"key":"Total Audience","val":"126 K"};
+    // $scope.variantsNew = {"name":"Mailing List","price":25,"size":"800x400","maxSize":"","formart":"PNG,GIF,JPEG"},{"name":"SMS","price":25,"size":"","maxSize":"","formart":"text"};
+    // $scope.statsNew = {"key":"Digital Subscribers","val":"50 K"},{"key":"SMS Reach","val":"25 K"},{"key":"Total Audience","val":"126 K"};
     $scope.file = {};
     $scope.products = [];
     $scope.product = {};
     $scope.variant = {};
+    $scope.stats = {};
+    $scope.feature = {};
     $scope.newStats = {};
     $scope.newFeature = {};
     $scope.newKF = {};
@@ -69,6 +71,8 @@ angular.module('shopnxApp')
 
       
       $scope.product = product;
+
+
       if('variants' in $scope.product){
       }else{
           $scope.product.variants = [];
@@ -82,41 +86,58 @@ angular.module('shopnxApp')
           $scope.product.features = [];
       }
 
-      if('size' in $scope.variantsNew){
-        $scope.product.variants.push($scope.variantsNew);
+      if('stats' in $scope.product){
+      }else{
+          $scope.product.features = [];
+      }
+
+      if('name' in $scope.variant){
+        $scope.product.variants.push($scope.variant);
         // console.log($scope.product.variants);
       }
       // console.log($scope.newKF);
       if('val' in $scope.newKF){
-        $scope.product.keyFeatures.push($scope.newKF.val);
+        $scope.product.keyFeatures.push($scope.newKF);
         console.log($scope.product.keyFeatures);
       }
       if('key' in $scope.newFeature){
         $scope.product.features.push($scope.newFeature);
         // console.log($scope.product.features);
       }
-      if('key' in $scope.statsNew){
-         alert("found some feature stats");
-         console.log($scope.statsNew);
-           $scope.product.stats.push($scope.statsNew);
+      if('key' in $scope.newStats){
+         // alert("found some feature stats");
+         console.log($scope.newStats);
+           $scope.product.stats.push($scope.newStats);
       }
 
-      $scope.variant = {};
-      $scope.newKF = {};
-      $scope.newFeature = {};
-      $scope.newStats = {};
+      
       // $scope.feature.key = feature.key.name;
       // $scope.product.feature = $scope.selected.feature;
 
       // console.log($scope.selected.feature);
       if('_id' in product){
-          Product.update({ id:$scope.product._id }, $scope.product).$promise.then(function(data) {
-            console.log(data);
-            toastr.success("Product info saved successfully","Success");
-          }, function(error) { // error handler
-            var err = error.data.errors;
-            toastr.error(err[Object.keys(err)].message,err[Object.keys(err)].name);
+
+        // delete product
+
+          Product.delete({id:product._id},function(){
+            console.log("product deleted");
+
+              Product.save($scope.product).$promise.then(function() {
+               toastr.success("Product info saved successfully","Success");
           });
+          });
+
+
+          // Product.update({ id:$scope.product._id }, $scope.product).$promise.then(function(data) {
+          //   console.log(data);
+          //   toastr.success("Product info saved successfully","Success");
+
+          // }, function(error) { // error handler
+          //   var err = error.data.errors;
+          //   toastr.error(err[Object.keys(err)].message,err[Object.keys(err)].name);
+          // });
+
+          // regenerate product
         }
         else{
           Product.save($scope.product).$promise.then(function() {
@@ -126,6 +147,11 @@ angular.module('shopnxApp')
               toastr.error(err[Object.keys(err)].message,err[Object.keys(err)].name);
           });
         }
+
+      $scope.variant = {};
+      $scope.newKF = {};
+      $scope.newFeature = {};
+      $scope.newStats = {};
     };
     $scope.changeActive = function(b){ // success handler
       b.active = !b.active;
