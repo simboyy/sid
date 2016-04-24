@@ -1,0 +1,58 @@
+<!-- <div class="modal-header">
+            <h3 class="modal-title"> <img class="img-thumbnail" style="width: 75px;height:50px" data-ng-src="data:image/png;base64,{{items.image}}" data-err-src="images/png/avatar.png"/>{{items.publisher}}</h3>
+        </div> -->
+ 
+ <!-- <div class="row" style="margin: 10px">
+        	<simple-chat
+            messages="messages"
+            local-user="you"
+            send-function="sendMessage"
+            send-button-text="Send"
+            show-user-avatar="true"
+            show-composer="true"
+            composer-placeholder-text="Write your message here"
+  ></simple-chat> -->
+
+  <div class="container">
+    <div class="row">
+        <div  style="width: 55%">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <span class="glyphicon glyphicon-comment"></span> Chat
+                    <div class="btn-group pull-right">
+                        <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </button>
+                        <ul class="dropdown-menu slidedown">
+                            <!-- <li><a href="#"><span class="glyphicon glyphicon-refresh">
+                            </span>Refresh</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-ok-sign">
+                            </span>Available</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-remove">
+                            </span>Busy</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-time"></span>
+                                Away</a></li> -->
+                            <li class="divider"></li>
+                            <li><a ng-click="cancel()"><span class="glyphicon glyphicon-off"></span>
+                                Close</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="panel-body">
+                     
+					 <div class="row"  >
+					        	<simple-chat
+					            messages="messages"
+					            local-user="you"
+					            send-function="sendMessage"
+					            send-button-text="Send"
+					            show-user-avatar="true"
+					            show-composer="true"
+					            composer-placeholder-text="Write your message here"
+					  ></simple-chat>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
