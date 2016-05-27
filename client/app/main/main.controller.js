@@ -2,7 +2,7 @@
 
 angular.module('shopnxApp')
 
- .controller('NewCampaignCtrl', function ($scope,$rootScope, toastr,Campaign , Product, Category, socket, $stateParams, $location, $state, $injector) {
+ .controller('NewCampaignCtrl', function ($scope,$rootScope, $modal,$log ,toastr,Campaign ,SweetAlert, Product, Category, socket, $stateParams, $location, $state, $injector) {
     var id = $stateParams.id;
     // var slug = $stateParams.slug;
     // Storing the product id into localStorage because the _id of the selected product which was passed as a hidden parameter from products won't available on page refresh
@@ -21,16 +21,89 @@ angular.module('shopnxApp')
     $scope.changeIndex =function(i){
         $scope.i=i;
     };
+
+    //open creative popup
+    $scope.open = function (campaigns ,p,creative,size) {
+    console.log(creative);
+
+    $rootScope.toMerge = campaigns;
+    $rootScope.toMergeCreative = creative;
+
+    var modalInstance = $modal.open({
+      templateUrl: 'creative.html',
+      controller: 'CreativeModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return p;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      // vm.selected = selectedItem;
+
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
+  $scope.openCreative = function (campaigns ,p,creative,size) {
+    console.log(creative);
+    $rootScope.toMerge = campaigns;
+    $rootScope.toMergeCreative = creative;
+
+    var modalInstance = $modal.open({
+      // animation: vm.animationsEnabled,
+      templateUrl: 'preview.html',
+      controller: 'CreativeModalInstanceCtrl',
+      size: size,
+      resolve: {
+        items: function () {
+          return p;
+        }
+      }
+    });
+
+    modalInstance.result.then(function (selectedItem) {
+      // vm.selected = selectedItem;
+
+    }, function () {
+      $log.info('Modal dismissed at: ' + new Date());
+    });
+  };
+
     
     // create new campaign
 
     $scope.createCampaign =  function(cart){
 
-      Campaign.save(cart).$promise.then(function() {
-        $state.go('campaign');
+      SweetAlert.swal({
+           title: "Are you sure?",
+           text: "A proposal will be sent to the publisher!",
+           type: "warning",
+           showCancelButton: true,
+           confirmButtonColor: "#DD6B55",confirmButtonText: "Yes, Send It!",
+           cancelButtonText: "No, cancel !",
+           closeOnConfirm: false,
+           closeOnCancel: false }, 
+      function(isConfirm){ 
+         if (isConfirm) {
+            SweetAlert.swal("proposal Send!", "Your proposal  has been send.", "success");
+
+        Campaign.save(cart).$promise.then(function() {
+          $state.go('campaign');
                // toastr.success("Campaign created  successfully","Success");
 
           });
+         } else {
+            SweetAlert.swal("Cancelled", "Process cancelled :)", "error");
+         }
+      });
+
+    
+
+     
 
       // body
     }
@@ -402,4 +475,35 @@ angular.module('shopnxApp')
 
     $scope.resetPriceRange();
 
+})
+.controller('CreativeModalInstanceCtrl', function ($scope,$rootScope, Campaign,$modalInstance,toastr, items) {
+
+   var newStatus = {
+      name: 'Creative Available',
+      val: 300
+    }
+
+   
+
+  var toMergeCampaign = $rootScope.toMerge;
+  var toMergeCreative = $rootScope.toMergeCreative;
+  var items 
+
+
+  // console.log(toMergeCampaign);
+  console.log(items);
+  console.log(toMergeCampaign);
+
+
+
+  $scope.items = items;
+
+  $scope.ok = function () {
+ 
+    $modalInstance.close();
+  };
+
+  $scope.cancel = function () {
+    $modalInstance.dismiss('cancel');
+  };
 });

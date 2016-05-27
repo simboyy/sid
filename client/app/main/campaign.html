@@ -11,9 +11,9 @@
                       <!--campaign details top-->
                       <div class="row">
                             <div  class="col-xs-3 stats-graph">
-                            <h4 class="section-header">Campaign</h4>
+                            <h4 class="section-header">Campaign Name</h4>
                              <md-input-container>
-                               <input  value="{{cart.campaignName}}" ng-model= "cart.campaignName"\>
+                               <input   value="{{cart.campaignName}}" ng-model= "cart.campaignName"\>
                                 </md-input-container>
                             
                             </div>
@@ -88,6 +88,7 @@
                                 <th>#</th>
                                 <th></th>
                                 <th>Product</th>
+                                <th>Creative</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
                                 <th>Total</th>
@@ -112,6 +113,13 @@
 
                                 <td class="product-name">
                                     <!-- <a ui-sref="productDetail({id:item.sku, slug:item.slug})" ng-click="cancel();"> -->{{item.publisher}}&nbsp;@{{item.name}}<!-- </a> -->
+                                </td>
+
+                                <td>
+                                  <button ng-hide="isAdmin()" ng-click="open(cart.items,item,item.creative,'md')" ><i class="fa fa-image"></i></button>
+                                  
+                                 
+
                                 </td>
 
                                 <td>{{item.price | currency}}</td>

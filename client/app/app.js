@@ -24,7 +24,8 @@ angular.module('shopnxApp', [
   'ngMaterial',
   'ngTable',
   'smart-table',
-  'angular.filter'
+  'angular.filter',
+  'oitozero.ngSweetAlert'
 
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
@@ -74,7 +75,7 @@ angular.module('shopnxApp', [
     });
 
     $rootScope.$on('$stateChangeSuccess', function (evt, toState) {
-        window.document.title = toState.title + ' - ShopNx';
+        window.document.title = toState.title + ' - MediaBox';
     });
 
     $rootScope.spinner = {

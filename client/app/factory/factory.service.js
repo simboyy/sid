@@ -13,6 +13,8 @@ angular.module('shopnxApp')
   .factory('Product', ['$resource', function($resource) {
     var obj = {};
     obj = $resource('/api/products/:id', null, {'update': { method:'PUT' } });
+    obj.my = $resource('/api/products/my', null, {'update': { method:'PUT' }});
+    obj.pub = $resource('/api/products/pub', null, {'update': { method:'PUT' }});
     obj.count = $resource('/api/products/count', null, {'update': { method:'PUT' }});
     return obj;
   }])
@@ -105,10 +107,7 @@ angular.module('shopnxApp')
       {name:'Order Placed', val:201},
       {name:'Order Accepted', val:202},
       {name:'Order Executed', val:302},
-      {name:'Shipped', val:200},
-      {name:'Delivered', val:200},
-      {name:'Cancelled', val:204},
-      {name:'Not in Stock', val:404}
+      {name:'Cancelled', val:204}
     ];
     return obj;
   }])

@@ -22,8 +22,8 @@
       <div class="panel-body">
           <table class="table">
               <tbody>
-                <tr ng-repeat="i in o.items" >
-                    <td class="product-thumbnail"> <img style="width: 100px"  data-ng-src="data:image/png;base64,{{i.image}}" data-err-src="images/png/avatar.png"/>
+                <tr ng-repeat="i in o.items" style="max-height: 80px" >
+                    <td class="product-thumbnail"> <img style="width: 100px ;max-height: 50px"  data-ng-src="data:image/png;base64,{{i.image}}" data-err-src="images/png/avatar.png"/>
                     </td>
                     <td>{{i.publisher}}<br>
                     {{i.name}}
@@ -48,7 +48,7 @@
                     <td><span class="text-muted"><!-- Status {{(i.status.val=='500')? 'Rejected':(i.status.val=='305')? 'Approved':(i.status.val=='300')? 'Creative Added':(i.status.val=='201')? 'Waiting for Response':((i.status.val=='202')?'Response Received': 'New')}} -->
 
                     <div ng-show= "i.status.val=='305'" class="alert alert-success">Approved</div>
-                    <div ng-hide="i.status.val=='300'||i.status.val=='500'||i.status.val=='402'||i.status.val=='309'" ng-show = "i.status.val=='305'" class="alert alert-danger" >Creative Required</div>
+                    <div ng-show="!i.creative" class="alert alert-danger" >Creative Required</div>
                     <div  ng-show = "i.status.val=='402'" class="alert alert-danger" >Waiting Response</div>
                     <div  ng-show = "i.status.val=='300'" class="alert alert-success" >Ready </div>
                     <div  ng-show = "i.status.val=='500'" class="alert alert-danger" >Rejected </div>

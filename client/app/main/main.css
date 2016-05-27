@@ -26,7 +26,7 @@ ol ol {
 .rounded-list a{
     position: relative;
     display: block;
-    padding: .4em .4em .4em 2em;
+    padding: .3em .3em .3em 1em;
     *padding: .4em;
     margin: .5em 0;
     background: #ddd;
@@ -36,45 +36,8 @@ ol ol {
     transition: all .3s ease-out;   
 }
 
-.rounded-list a:hover{
-    background: #eee;
-    text-decoration: none;
-}
 
-.rounded-list a:hover:before{
-    transform: rotate(360deg);  
-}
 
-.rounded-list a:before{
-    content: counter(li);
-    counter-increment: li;
-    position: absolute; 
-    left: -1.3em;
-    top: 50%;
-    margin-top: -1.3em;
-    background: #87ceeb;
-    height: 2em;
-    width: 2em;
-    line-height: 2em;
-    border: .3em solid #fff;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 2em;
-    transition: all .3s ease-out;
-}
-.numberCircle {
-    border-radius: 50%;
-    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
-    width: 36px;
-    height: 36px;
-    padding: 8px;
-    background: #fff;
-    border: 2px solid black;
-    color: black;
-    text-align: center;
-    font: 32px Arial, sans-serif;
-    display: inline-block;
-}
 
 .container .custom {
     height: inherit;

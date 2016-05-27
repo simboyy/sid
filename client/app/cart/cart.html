@@ -48,12 +48,12 @@
                 <td>{{$index+1}}</td>
                 <td class="product-thumbnail">
                     <a>
-                         <img data-ng-src="data:image/png;base64,{{item.image}}"  alt="{{item.publisher}}" width="100px" class="img-responsive">
+                         <img data-ng-src="data:image/png;base64,{{item.image}}"  alt="{{item.publisher}}" width="100px" style="max-height: 40px" class="img-responsive">
                     </a>
                 </td>
 
                 <td class="product-name">
-                    <!-- <a ui-sref="productDetail({id:item.sku, slug:item.slug})" ng-click="cancel();"> -->{{item.name}}<!-- </a> -->
+                   {{item.name}}
                 </td>
 
                 <td>{{item.price | currency}}</td>

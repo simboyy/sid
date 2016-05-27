@@ -54,14 +54,14 @@
                      <!-- <button ng-click="vm.toggleRight()"ng-hide="isOpenRight()" ><i class="fa fa-paper-plane"></i></button> -->
 
                     </div>
-                    <div ng-hide="i.status.val==402">
+                    <div ng-show="i.creative">
                       <button   ng-click="vm.openCreative(o,i,i.creative,'md')" ><i class="fa fa-image"></i></button>
                     </div>
 
                     </td>
                     <td class="col-md-2"><span class="text-muted"><!-- Status {{(i.status.val=='300')? 'Creative Added':(i.status.val=='305')? 'Approved':((i.status.val=='500')?'Rejected': 'New')}} --><span>
                       <div ng-show= "i.status.val=='305'" class="alert alert-success">Approved</div>
-                    <div ng-hide="i.status.val=='300'||i.status.val=='500'||i.status.val=='402'||i.status.val=='309'" ng-show = "i.status.val=='305'" class="alert alert-danger" >Creative Needed</div>
+                    <div ng-show="!i.creative" class="alert alert-danger" >Creative Needed</div>
                     <div  ng-show = "i.status.val=='402'" class="alert alert-danger" >New</div>
                     <div  ng-show = "i.status.val=='300'" class="alert alert-success" >Ready </div>
                     <div  ng-show = "i.status.val=='500'" class="alert alert-danger" >Rejected </div>
@@ -214,7 +214,7 @@
       <div >
          <table class="table">
               <tbody>
-                <tr ng-repeat="i in item.items|filterBy: ['status.val']:300" >
+                <tr ng-repeat="i in item.items|filterBy: ['status.val']:305" >
                     <td> <!-- <img style="width: 100px;" class="product-thumbnail"  data-ng-src="data:image/png;base64,{{i.image}}" data-err-src="images/png/avatar.png"/> -->
                     {{i.advertiser.company}}<br>
 
@@ -243,12 +243,11 @@
 
                     </td>
                     <td><span class="text-muted"><!-- Status {{(i.status.val=='300')? 'Creative Added':(i.status.val=='305')? 'Approved':((i.status.val=='500')?'Rejected': 'New')}} --><span>
-                      <div ng-show= "i.status.val=='305'" class="alert alert-success">Approved</div>
-                    <div ng-hide="i.status.val=='300'||i.status.val=='500'||i.status.val=='402'||i.status.val=='309'" ng-show = "i.status.val=='305'" class="alert alert-danger" >Creative Needed</div>
-                    <div  ng-show = "i.status.val=='402'" class="alert alert-danger" >New</div>
-                    <div  ng-show = "i.status.val=='300'" class="alert alert-success" >Ready </div>
-                    <div  ng-show = "i.status.val=='500'" class="alert alert-danger" >Rejected </div>
-                     <div  ng-show = "i.status.val=='309'" class="alert alert-success" >Complete </div>
+                     
+                    <div ng-show="!i.creative" class="alert alert-danger" >Creative Needed</div>
+                    
+                    
+                     <div  ng-show="i.creative" class="alert alert-success" >Ready </div>
                     </span></td>
                     <td><span class="text-muted"> Action :<select ng-model="i.status"
                         ng-options="p.name for p in vm.campaignStatusCreativeAdded track by p.val"

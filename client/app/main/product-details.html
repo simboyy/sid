@@ -38,12 +38,6 @@ _________________________________________________________ -->
           </div>
 
           <!-- *** MENUS AND FILTERS END *** -->
-
-          <!-- <div class="banner">
-              <a href="#">
-                  <img src="/assets/img/banner.jpg" alt="sales 2015" class="img-responsive">
-              </a>
-          </div> -->
       </div>
 
       <div class="col-md-9">
@@ -130,7 +124,7 @@ _________________________________________________________ -->
             <img src="/assets/img/preview.png" width="100%" >
               
             </div>
-            <p>{{name}}<br/>{{formart}} &nbsp;{{size}}<br/>
+            <p><summary><small>{{name}} &nbsp; {{formart}} &nbsp;{{size}}</small></summary><br/>
             </p>
 
             </div>
@@ -152,13 +146,12 @@ _________________________________________________________ -->
                              
                                 <td>{{adspace.name}}<br><span><small>{{adspace.size}} &nbsp;{{adspace.maxSize}} &nbsp;{{adspace.formart}}</small></span></td>
                                 <td> {{adspace.price | currency}}<br><small>{{adspace.model}}</small></td>
-                                <td><small><!-- <div class="btn-group  btn-min">
-                        <a ui-sref="productDetail({id:adspace.id, slug:product.slug})" class="btn btn-default  btn-min">View detail</a> -->
+                                <td><small> <div class="btn-group  btn-min">
                         <a ng-click="cart.addItem({sku:adspace.sku, name:adspace.name,  price:adspace.price}, -1)" ng-hide="checkCart(adspace.sku)" class="btn btn-info  btn-min">-</a>
 
                         <a ng-hide="checkCart(adspace.sku)" class="btn btn-info  btn-min">{{getQuantity(adspace.sku)}}</a>
 
-                        <!-- <a ng-click="cart.addItem({sku:adspace.sku, name:adspace.name, price:adspace.price}, +1)" ng-hide="checkCart(adspace.sku)" class="btn btn-info  btn-min">+</a> -->
+                        
                         </div>
                         <a ng-click="cart.addItem({sku:adspace.sku, name:adspace.name,slug:adspace.formart,mrp:adspace.model, weight:adspace.maxSize,size:adspace.size,price:adspace.price ,status: {name:'New', val:402}, publisher:product.name,advertiser:user,uid:product.uid,category:product.brand.name,image:product.logo[0].base64,quantity:1} ,true);" ng-show="checkCart(adspace.sku)" class="btn btn-primary  btn-min"><i class="fa fa-shopping-cart"></i></a>
                       </div> 

@@ -9,8 +9,8 @@
       this.totalWeight = 0;
       this.taxRate = 10;
       this.tax = null;
-      this.campaignName = "Campaign Name";
-      this.objectives = "Objectives";
+      this.campaignName = "";
+      this.objectives = "";
       this.startDate = "";
       this.endDate = "";
       this.products = null;
@@ -339,8 +339,8 @@ ShoppingCart.prototype.checkoutPayPal = function (parms, clearCart) {
         upload: "1",
         rm: "2",
         charset: "utf-8",
-        cancel_return: 'http://biri.in/cart',
-        return: 'http://biri.in/order'
+        cancel_return: 'http://mediaboxzw.herokuapp.com/cart',
+        return: 'http://mediaboxzw.herokuapp.com/order'
     };
 
     // var selectedShipping = this.getTotalPriceAfterShipping();

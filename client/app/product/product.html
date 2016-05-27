@@ -39,8 +39,8 @@
                     <select ng-model="product.category" ng-options="option.name for option in categories | orderBy:'name' track by option._id" class="form-control">
                         <option value="">Select Platform</option>
                     </select>
-
-                    <!-- <ui-select ng-model="product.category" theme="bootstrap" title="Select Category">
+<!-- 
+                    <ui-select ng-model="product.category" theme="bootstrap" title="Select Category">
                       <ui-select-match  class="ui-select-match" placeholder="Select Category...">{{$select.selected.name}} </ui-select-match>
                       <ui-select-choices class="ui-select-choices" repeat="c in categories | propsFilter: {name: $select.search}">
                         <span ng-bind-html="c.name | highlight: $select.search"></span>

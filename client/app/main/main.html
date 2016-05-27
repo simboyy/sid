@@ -51,7 +51,7 @@
               </h3>
           </div>
 
-          <div class="panel-body brand-filter-panel">
+          <div class="panel-body">
 
               <form>
                   <div class="form-group">
@@ -68,6 +68,8 @@
 
           </div>
       </div>
+
+
 
       <div class="panel panel-default sidebar-menu">
 
@@ -163,26 +165,24 @@
                                 </center>
                                 
                                 </div>
-
-                                <div class="clear-fix"></div>
                               
-                                <div class="text text-center" style="margin-top: 10px">
+                                <div class="text text-center" style="margin-top: 10px;height: 250px">
                                     <h3><a ui-sref="productDetail({id:product._id, slug:product.slug})">{{product.name}}</a>
                                    
                                     </h3>
 
-                                    <div style="margin: 10px">
+                                    <div style="margin: 7px">
                                     <ol class="rounded-list">
                                          <li ng-repeat="f in product.stats"><a href="#">{{f.key}} : {{f.val}}</a></li>                    
                                     </ol>
                                     </div>
 
-                                    <!-- <a href="/Brand/{{product.brand.name}}/{{product.brand._id}}">{{product.brand.name}}</a>                                    <a href="/Category/{{product.category.slug}}/{{product.category._id}}">{{product.category.name}} -->
-
+                                 <!--    <a href="/Brand/{{product.brand.name}}/{{product.brand._id}}">{{product.brand.name}}</a> -->                                  
 
                                     
-                                   <!-- <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">{{product.variants[0].mrp | currency : '$'}}</del> {{product.variants[0].price | currency : '$'}}</p>-->
-                                    <!--<p class="buttons">
+                               <!--      <p class="price"><del ng-if="product.variants[0].price!=product.variants[0].mrp">
+                                    Starting From {{product.variants[0].mrp | currency : '$'}}</del> {{product.variants[0].price | currency : '$'}}</p> -->
+                                   <!--  <p class="buttons">
                                       <div class="btn-group">
                                       <a ui-sref="productDetail({id:product._id, slug:product.slug})" class="btn btn-default">View detail</a>
                                       <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, -1)" ng-hide="checkCart(product._id)" class="btn btn-info">-</a>
@@ -192,7 +192,13 @@
                                       <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, weight:product.variants[0].weight}, +1)" ng-hide="checkCart(product._id)" class="btn btn-info">+</a>
                                       </div>
                                       <a ng-click="cart.addItem({sku:product._id, name:product.name, slug:product.slug, mrp:product.variants[0].mrp, price:product.variants[0].price, quantity:1, image:product.variants[0].image,category:product.category, size:product.variants[0].size, weight:product.variants[0].weight} ,true);" ng-show="checkCart(product._id)" class="btn btn-primary"><i class="fa fa-shopping-cart"></i>Add to cart</a>
-                                    </p>-->
+                                    </p> -->
+                                </div>
+                                <div style="text-align:bottom;vertical-align: bottom;text-align: center;margin-bottom: 0px">
+                                   <span><small>Category: <a href="/Category/{{product.category.slug}}/{{product.category._id}}">{{product.category.name}}</a></small>
+                                    
+                                   </span> 
+
                                 </div>
                                 <!-- /.text -->
                             </div>
